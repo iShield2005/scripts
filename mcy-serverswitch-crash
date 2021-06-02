@@ -1,0 +1,65 @@
+game:GetService("StarterGui"):SetCore("SendNotification",{
+				Icon = "rbxthumb://type=Asset&id=5895361327&w=150&h=150",
+				Title = "          CRASHING",
+				Text = "          Made by iShield.\n               Please, wait.",
+				Duration = 15,
+			})
+wait(5)
+function FakeChar(option)
+	if option == true then
+		FakeCameraSubject = true
+		game.Players.LocalPlayer.Character.Archivable = true
+		local newchar = game.Players.LocalPlayer.Character:Clone()
+		newchar.Parent = game.Workspace
+		newchar.Name = "FakeChar"
+		newchar["HumanoidRootPart"].CFrame = CFrame.new(game.Players.LocalPlayer.Character["HumanoidRootPart"].Position)
+		workspace.CurrentCamera.CameraSubject = newchar.Humanoid
+	else
+		FakeCameraSubject = false
+		workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character["Humanoid"]
+		game.Workspace["FakeChar"]:Destroy()
+	end
+end
+coroutine.wrap(function()
+    while wait() do
+    if FakeCameraSubject then
+	    print("Buying Warhawk")
+	    print("Buying Warhawk")
+	    print("Not enough money")
+		if game.Workspace["FakeChar"] ~= nil then
+		    workspace.CurrentCamera.CameraSubject = game.Workspace["FakeChar"]
+			game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
+			for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do
+				v:Destroy()
+			end
+			for i,v in pairs(game.CoreGui:GetDescendants()) do
+				if v:IsA("ScreenGui") then
+				    v:Destroy()
+				end
+			end
+		end
+	else
+		game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+	end
+end
+end)()
+FakeChar(true)
+local char = game.Players.LocalPlayer.Character
+if char and char:FindFirstChild("HumanoidRootPart") then
+	game:GetService("TweenService"):Create(char.HumanoidRootPart, TweenInfo.new(10, Enum.EasingStyle.Linear), {CFrame = CFrame.new(-86.851532, 105.266121, -3807.2229)}):Play()
+end
+wait(10)
+char.HumanoidRootPart.Anchored = true;
+coroutine.wrap(function()
+    while wait() do
+    if game.Players.LocalPlayer.Team.Name == "Prisioners" or game.Players.LocalPlayer.Team.Name == "Criminals" or game.Players.LocalPlayer.Team.Name == "Police" then
+    local args = {
+    [1] = "SpawnVehicle",
+    [2] = "Camaro"
+    }
+    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
+    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
+    end
+end
+end)()
+
