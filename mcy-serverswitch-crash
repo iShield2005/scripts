@@ -72,7 +72,7 @@ coroutine.wrap(function()
 end
 end)()
 coroutine.wrap(function()
-	wait(180)
+	wait(300)
 	game.Players.LocalPlayer:Kick()
 end)()
 FakeChar(true)
