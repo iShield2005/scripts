@@ -1,3 +1,6 @@
+if not syn or not syn.queue_on_teleport then
+	warn("[CRASHER] Unsupported exploit.")
+end
 game:GetService("StarterGui"):SetCore("SendNotification",{
 				Icon = "rbxthumb://type=Asset&id=5895361327&w=150&h=150",
 				Title = "          CRASHING",
@@ -26,16 +29,12 @@ coroutine.wrap(function()
 	    print("Buying Warhawk")
 	    print("Buying Warhawk")
 	    print("Not enough money")
+	    game:GetService("RunService"):UnbindFromRenderStep("Freecam")
+	    workspace.Camera.FieldOfView = 70
 		if game.Workspace["FakeChar"] ~= nil then
 		    workspace.CurrentCamera.CameraSubject = game.Workspace["FakeChar"]
-			game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 			for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do
 				v:Destroy()
-			end
-			for i,v in pairs(game.CoreGui:GetDescendants()) do
-				if v:IsA("ScreenGui") then
-				    v:Destroy()
-				end
 			end
 		end
 	else
@@ -62,4 +61,15 @@ coroutine.wrap(function()
     end
 end
 end)()
-
+local Dir = game:GetService("CoreGui"):FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
+Dir.DescendantAdded:Connect(function(Err)
+	if Err.Name == "ErrorTitle" then
+	    if not queued then
+	        queued = true
+	        syn.queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/mcy-serverswitch-crash"))()')
+	    end
+	    while wait(1) do
+		    game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+		end
+	end
+end)
