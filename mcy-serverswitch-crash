@@ -45,6 +45,10 @@ coroutine.wrap(function()
 	end
 end
 end)()
+coroutine.wrap(function()
+	wait(300)
+	game.Players.LocalPlayer:Kick()
+end)()
 FakeChar(true)
 local char = game.Players.LocalPlayer.Character
 if char and char:FindFirstChild("HumanoidRootPart") then
