@@ -417,7 +417,7 @@ TextLabel_Roundify_12px.SliceScale = 0.120
 
 -- Scripts:
 
-local function OBXDHS_fake_script() -- UIListLayout.AutoSize 
+local function GMST_fake_script() -- UIListLayout.AutoSize 
 	local script = Instance.new('LocalScript', UIListLayout)
 
 	script.Parent:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
@@ -425,14 +425,14 @@ local function OBXDHS_fake_script() -- UIListLayout.AutoSize
 		script.Parent.Parent.CanvasSize = UDim2.new(0,absoluteSize.X, 0, absoluteSize.Y)
 	end)
 end
-coroutine.wrap(OBXDHS_fake_script)()
-local function PZEFE_fake_script() -- Output.Hide 
+coroutine.wrap(GMST_fake_script)()
+local function YRIJYJ_fake_script() -- Output.Hide 
 	local script = Instance.new('LocalScript', Output)
 
 	script.Parent.Visible = false
 end
-coroutine.wrap(PZEFE_fake_script)()
-local function NFAU_fake_script() -- Input.Core 
+coroutine.wrap(YRIJYJ_fake_script)()
+local function ZOZS_fake_script() -- Input.Core 
 	local script = Instance.new('LocalScript', Input)
 
 	local playerdiscordid = "TestID"
@@ -830,13 +830,12 @@ local function NFAU_fake_script() -- Input.Core
 	InputBox.FocusLost:Connect(
 		function(enterPressed)
 			if enterPressed then
-				saveCommand(script.Parent.Text)
 				if not paused then
 					local command = script.Parent.Text
 					local split_message = command:split(" ")
-					local arg1 = string.lower(split_message[1])
-					local arg2 = string.lower(split_message[2])
-					local arg3 = string.lower(split_message[3])
+					arg1 = string.lower(split_message[1])
+					if split_message[2] then arg2 = string.lower(split_message[2]) end
+					if split_message[3] then arg3 = string.lower(split_message[3]) end
 					for i = 4,#split_message do
 						arg3 = string.lower(arg3.." "..split_message[i])
 					end
@@ -1179,8 +1178,8 @@ local function NFAU_fake_script() -- Input.Core
 		end
 	end)()
 end
-coroutine.wrap(NFAU_fake_script)()
-local function MOOATB_fake_script() -- TextButton.ShowOutput 
+coroutine.wrap(ZOZS_fake_script)()
+local function HFGUVVA_fake_script() -- TextButton.ShowOutput 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Click:Connect(function()
@@ -1193,8 +1192,8 @@ local function MOOATB_fake_script() -- TextButton.ShowOutput
 		end
 	end)
 end
-coroutine.wrap(MOOATB_fake_script)()
-local function BQNVG_fake_script() -- Button.ShowCMDS 
+coroutine.wrap(HFGUVVA_fake_script)()
+local function KWRYP_fake_script() -- Button.ShowCMDS 
 	local script = Instance.new('LocalScript', Button)
 
 	script.Parent.MouseButton1Click:Connect(function()
@@ -1207,8 +1206,8 @@ local function BQNVG_fake_script() -- Button.ShowCMDS
 		end
 	end)
 end
-coroutine.wrap(BQNVG_fake_script)()
-local function OIAC_fake_script() -- UIListLayout_2.AutoSize 
+coroutine.wrap(KWRYP_fake_script)()
+local function WLDK_fake_script() -- UIListLayout_2.AutoSize 
 	local script = Instance.new('LocalScript', UIListLayout_2)
 
 	script.Parent:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
@@ -1216,8 +1215,8 @@ local function OIAC_fake_script() -- UIListLayout_2.AutoSize
 		script.Parent.Parent.CanvasSize = UDim2.new(0,absoluteSize.X, 0, absoluteSize.Y)
 	end)
 end
-coroutine.wrap(OIAC_fake_script)()
-local function OTNEQY_fake_script() -- ScrollingFrame_3.CommandAdder 
+coroutine.wrap(WLDK_fake_script)()
+local function VOGEGR_fake_script() -- ScrollingFrame_3.CommandAdder 
 	local script = Instance.new('LocalScript', ScrollingFrame_3)
 
 	-- Ver si el número es par.
@@ -1263,16 +1262,16 @@ local function OTNEQY_fake_script() -- ScrollingFrame_3.CommandAdder
 		end
 	end
 end
-coroutine.wrap(OTNEQY_fake_script)()
-local function DUFW_fake_script() -- CMDS.Hide 
+coroutine.wrap(VOGEGR_fake_script)()
+local function MKEZU_fake_script() -- CMDS.Hide 
 	local script = Instance.new('LocalScript', CMDS)
 
 	script.Parent.Visible = false
 end
-coroutine.wrap(DUFW_fake_script)()
-local function MCRGEJ_fake_script() -- Area02Main.LocalScript 
+coroutine.wrap(MKEZU_fake_script)()
+local function ZTAGYIW_fake_script() -- Area02Main.LocalScript 
 	local script = Instance.new('LocalScript', Area02Main)
 
 	script.Parent.Parent = game:GetService("CoreGui")
 end
-coroutine.wrap(MCRGEJ_fake_script)()
+coroutine.wrap(ZTAGYIW_fake_script)()
