@@ -154,8 +154,11 @@ else
 		local script = Instance.new('LocalScript', YES)
 
 		script.Parent.MouseButton1Click:Connect(function()
-			script.Parent.Parent.Visible = false
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader", true))()
+			if not alrclicked then
+				alrclicked == true
+				script.Parent.Parent.Visible = false
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader", true))()
+			end
 		end)
 	end
 	coroutine.wrap(PJJYEM_fake_script)()
