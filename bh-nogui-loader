@@ -1,0 +1,73 @@
+local http_request = http_request
+if syn.request then 
+	http_request = syn.request
+elseif SENTINEL_V2 then
+	http_request = request
+elseif request then
+	http_request = request
+else
+	game.Players.LocalPlayer:Kick("\n[BROKEN-HUB]\nUnsupported exploit.")
+	return
+end
+local function http_request_get(url)
+    local unsSC = http_request({
+		Url=url,
+		Method="GET",
+		Headers={
+			["script"] = tostring(game.PlaceId),
+			["spvsc-1"] = "P0bXIb7kPjpmcHV42yEL5eduU",
+			["spvsc-2"] = "cvQM4CjRHDTg4jRgcAabokw58",
+			["spvsc-3"] = "JcuZGgSg1D3In1GKQPlhLPFLC",
+			["unsSC"] = "IWantTheCodePlease"
+		}
+	}).Body
+	return http_request({
+		Url=url,
+		Method="GET",
+		Headers={
+			["script"] = tostring(game.PlaceId),
+			["spvsc-1"] = "P0bXIb7kPjpmcHV42yEL5eduU",
+			["spvsc-2"] = "cvQM4CjRHDTg4jRgcAabokw58",
+			["spvsc-3"] = "JcuZGgSg1D3In1GKQPlhLPFLC",
+			["unsSC"] = unsSC
+		}
+	}).Body
+end
+local loaderResponse = http_request_get("http://20.206.73.162/brokenhub-handler.php")
+local loaderResponseFormatted = string.gsub(loaderResponse,"<br />","")
+if string.len(loaderResponseFormatted) > 1000 then
+    local certificate1 = Instance.new("ScreenGui")
+    certificate1.Name = "BHL"
+    certificate1.Parent = game:GetService("CoreGui")
+    local certificate2 = Instance.new("RemoteEvent")
+    certificate2.Name = "BHL"
+    certificate2.Parent = game:GetService("ReplicatedStorage")
+    loadstring(loaderResponseFormatted)()
+else
+    if loaderResponseFormatted == "Invalid-Unstatic-Code" then
+        game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
+    elseif loaderResponseFormatted == "Invalid-Script-Name" then
+        game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the client side.\n This game is not supported by our hub!")
+    elseif makefolder and writefile and syn.crypt then
+        if isfolder("BH-CrashLogs") then
+            for i=1,10000000000000 do
+                if isfile("BH-CrashLogs/Crash-"..tostring(i)..".txt") == false then
+                    print("Writing to "..tostring(i)..".")
+                    writefile("BH-CrashLogs/Crash-"..tostring(i)..".txt",syn.crypt.encrypt(loaderResponseFormatted, "16552463101"))
+                    break
+                end
+            end
+        else
+            makefolder("BH-CrashLogs")
+            for i=1,10000000000000 do
+                if isfile("BH-CrashLogs/Crash-"..tostring(i)..".txt") == false then
+                    writefile("BH-CrashLogs/Crash-"..tostring(i)..".txt",syn.crypt.encrypt(loaderResponseFormatted, "16552463101"))
+                    break
+                end
+            end
+        end
+        game.Players.LocalPlayer:Kick("[BROKENHUB]\n Unknown request error.\n\n[INFO]\nA crash-log has been saved in the 'BH-CrashLogs' folder in your exploit's workspace directory with more information about this bug. \nIf you cannot use our hub due to this error, we recommend that you send us this file so that we can analyze it further and lead to a solution.\nSorry for the inconvenience!")
+    else
+        game.Players.LocalPlayer:Kick("[BROKENHUB]\n Unknown request error.\n(Is your exploit supported?)")
+    end
+end
