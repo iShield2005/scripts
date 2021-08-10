@@ -1,169 +1,183 @@
--- Gui to Lua
--- Version: 3.2
+repeat
+	wait()
+until game:IsLoaded()
+repeat
+	wait()
+until game.Players.LocalPlayer.Team.Name == "Unauthorized"
+repeat
+	wait()
+until game.Players.LocalPlayer.Team.Name ~= "Unauthorized"
+wait(3)
+if game:GetService("CoreGui"):FindFirstChild("Area02Main") then
+	print("Already loaded")
+else
+	-- Gui to Lua
+	-- Version: 3.2
 
--- Instances:
+	-- Instances:
 
-local BHSwitchLoader = Instance.new("ScreenGui")
-local SwitchLoader = Instance.new("ImageLabel")
-local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local TextLabel_2 = Instance.new("TextLabel")
-local Frame_2 = Instance.new("ImageLabel")
-local YES = Instance.new("TextButton")
-local TextButton_Roundify_12px = Instance.new("ImageLabel")
-local NO = Instance.new("TextButton")
-local TextButton_Roundify_12px_2 = Instance.new("ImageLabel")
+	local BHSwitchLoader = Instance.new("ScreenGui")
+	local SwitchLoader = Instance.new("ImageLabel")
+	local Frame = Instance.new("Frame")
+	local TextLabel = Instance.new("TextLabel")
+	local TextLabel_2 = Instance.new("TextLabel")
+	local Frame_2 = Instance.new("ImageLabel")
+	local YES = Instance.new("TextButton")
+	local TextButton_Roundify_12px = Instance.new("ImageLabel")
+	local NO = Instance.new("TextButton")
+	local TextButton_Roundify_12px_2 = Instance.new("ImageLabel")
 
---Properties:
+	--Properties:
 
-BHSwitchLoader.Name = "BHSwitchLoader"
-BHSwitchLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-BHSwitchLoader.ResetOnSpawn = false
+	BHSwitchLoader.Name = "BHSwitchLoader"
+	BHSwitchLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	BHSwitchLoader.ResetOnSpawn = false
 
-SwitchLoader.Name = "SwitchLoader"
-SwitchLoader.Parent = BHSwitchLoader
-SwitchLoader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SwitchLoader.BackgroundTransparency = 1.000
-SwitchLoader.BorderColor3 = Color3.fromRGB(27, 42, 53)
-SwitchLoader.Position = UDim2.new(0, 35, 1, -300)
-SwitchLoader.Size = UDim2.new(0, 229, 0, 180)
-SwitchLoader.Image = "rbxassetid://3570695787"
-SwitchLoader.ImageColor3 = Color3.fromRGB(45, 45, 45)
-SwitchLoader.ScaleType = Enum.ScaleType.Slice
-SwitchLoader.SliceCenter = Rect.new(100, 100, 100, 100)
-SwitchLoader.SliceScale = 0.167
+	SwitchLoader.Name = "SwitchLoader"
+	SwitchLoader.Parent = BHSwitchLoader
+	SwitchLoader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SwitchLoader.BackgroundTransparency = 1.000
+	SwitchLoader.BorderColor3 = Color3.fromRGB(27, 42, 53)
+	SwitchLoader.Position = UDim2.new(0, 35, 1, -300)
+	SwitchLoader.Size = UDim2.new(0, 229, 0, 180)
+	SwitchLoader.Image = "rbxassetid://3570695787"
+	SwitchLoader.ImageColor3 = Color3.fromRGB(45, 45, 45)
+	SwitchLoader.ScaleType = Enum.ScaleType.Slice
+	SwitchLoader.SliceCenter = Rect.new(100, 100, 100, 100)
+	SwitchLoader.SliceScale = 0.167
 
-Frame.Parent = SwitchLoader
-Frame.BackgroundColor3 = Color3.fromRGB(136, 0, 0)
-Frame.Position = UDim2.new(0.142030537, 0, 0.129999995, 0)
-Frame.Size = UDim2.new(0, 156, 0, 1)
+	Frame.Parent = SwitchLoader
+	Frame.BackgroundColor3 = Color3.fromRGB(136, 0, 0)
+	Frame.Position = UDim2.new(0.142030537, 0, 0.129999995, 0)
+	Frame.Size = UDim2.new(0, 156, 0, 1)
 
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(-0.051282052, 0, 14, 0)
-TextLabel.Size = UDim2.new(0, 178, 0, 78)
-TextLabel.ZIndex = 2
-TextLabel.Font = Enum.Font.Code
-TextLabel.Text = "A server-switch disabled the script. Do you want to load it again?"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 14.000
-TextLabel.TextWrapped = true
+	TextLabel.Parent = Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.Position = UDim2.new(-0.051282052, 0, 14, 0)
+	TextLabel.Size = UDim2.new(0, 178, 0, 78)
+	TextLabel.ZIndex = 2
+	TextLabel.Font = Enum.Font.Code
+	TextLabel.Text = "A server-switch disabled the script. Do you want to load it again?"
+	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 14.000
+	TextLabel.TextWrapped = true
 
-TextLabel_2.Parent = SwitchLoader
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.BackgroundTransparency = 1.000
-TextLabel_2.Position = UDim2.new(0.167245269, 0, -0.00100000005, 3)
-TextLabel_2.Size = UDim2.new(0, 152, 0, 17)
-TextLabel_2.Font = Enum.Font.SciFi
-TextLabel_2.Text = "BrokenHub - LOADER"
-TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_2.TextScaled = true
-TextLabel_2.TextSize = 14.000
-TextLabel_2.TextWrapped = true
+	TextLabel_2.Parent = SwitchLoader
+	TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel_2.BackgroundTransparency = 1.000
+	TextLabel_2.Position = UDim2.new(0.167245269, 0, -0.00100000005, 3)
+	TextLabel_2.Size = UDim2.new(0, 152, 0, 17)
+	TextLabel_2.Font = Enum.Font.SciFi
+	TextLabel_2.Text = "BrokenHub - LOADER"
+	TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel_2.TextScaled = true
+	TextLabel_2.TextSize = 14.000
+	TextLabel_2.TextWrapped = true
 
-Frame_2.Name = "Frame"
-Frame_2.Parent = SwitchLoader
-Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_2.BackgroundTransparency = 1.000
-Frame_2.Position = UDim2.new(0.0808951706, 0, 0.188888893, 0)
-Frame_2.Size = UDim2.new(0.836135387, 0, 0.478275925, 0)
-Frame_2.Image = "rbxassetid://3570695787"
-Frame_2.ImageColor3 = Color3.fromRGB(77, 77, 77)
-Frame_2.ScaleType = Enum.ScaleType.Slice
-Frame_2.SliceCenter = Rect.new(100, 100, 100, 100)
-Frame_2.SliceScale = 0.120
+	Frame_2.Name = "Frame"
+	Frame_2.Parent = SwitchLoader
+	Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame_2.BackgroundTransparency = 1.000
+	Frame_2.Position = UDim2.new(0.0808951706, 0, 0.188888893, 0)
+	Frame_2.Size = UDim2.new(0.836135387, 0, 0.478275925, 0)
+	Frame_2.Image = "rbxassetid://3570695787"
+	Frame_2.ImageColor3 = Color3.fromRGB(77, 77, 77)
+	Frame_2.ScaleType = Enum.ScaleType.Slice
+	Frame_2.SliceCenter = Rect.new(100, 100, 100, 100)
+	Frame_2.SliceScale = 0.120
 
-YES.Name = "YES"
-YES.Parent = SwitchLoader
-YES.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-YES.BackgroundTransparency = 1.000
-YES.BorderSizePixel = 0
-YES.Position = UDim2.new(0.0782638639, 0, 0.747812569, 0)
-YES.Size = UDim2.new(0, 82, 0, 35)
-YES.ZIndex = 2
-YES.Font = Enum.Font.SciFi
-YES.Text = "YES"
-YES.TextColor3 = Color3.fromRGB(0, 0, 0)
-YES.TextScaled = true
-YES.TextSize = 14.000
-YES.TextWrapped = true
+	YES.Name = "YES"
+	YES.Parent = SwitchLoader
+	YES.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	YES.BackgroundTransparency = 1.000
+	YES.BorderSizePixel = 0
+	YES.Position = UDim2.new(0.0782638639, 0, 0.747812569, 0)
+	YES.Size = UDim2.new(0, 82, 0, 35)
+	YES.ZIndex = 2
+	YES.Font = Enum.Font.SciFi
+	YES.Text = "YES"
+	YES.TextColor3 = Color3.fromRGB(0, 0, 0)
+	YES.TextScaled = true
+	YES.TextSize = 14.000
+	YES.TextWrapped = true
 
-TextButton_Roundify_12px.Name = "TextButton_Roundify_12px"
-TextButton_Roundify_12px.Parent = YES
-TextButton_Roundify_12px.Active = true
-TextButton_Roundify_12px.AnchorPoint = Vector2.new(0.5, 0.5)
-TextButton_Roundify_12px.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_Roundify_12px.BackgroundTransparency = 1.000
-TextButton_Roundify_12px.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextButton_Roundify_12px.Selectable = true
-TextButton_Roundify_12px.Size = UDim2.new(1, 0, 1, 0)
-TextButton_Roundify_12px.Image = "rbxassetid://3570695787"
-TextButton_Roundify_12px.ImageColor3 = Color3.fromRGB(4, 255, 0)
-TextButton_Roundify_12px.ScaleType = Enum.ScaleType.Slice
-TextButton_Roundify_12px.SliceCenter = Rect.new(100, 100, 100, 100)
-TextButton_Roundify_12px.SliceScale = 0.120
+	TextButton_Roundify_12px.Name = "TextButton_Roundify_12px"
+	TextButton_Roundify_12px.Parent = YES
+	TextButton_Roundify_12px.Active = true
+	TextButton_Roundify_12px.AnchorPoint = Vector2.new(0.5, 0.5)
+	TextButton_Roundify_12px.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextButton_Roundify_12px.BackgroundTransparency = 1.000
+	TextButton_Roundify_12px.Position = UDim2.new(0.5, 0, 0.5, 0)
+	TextButton_Roundify_12px.Selectable = true
+	TextButton_Roundify_12px.Size = UDim2.new(1, 0, 1, 0)
+	TextButton_Roundify_12px.Image = "rbxassetid://3570695787"
+	TextButton_Roundify_12px.ImageColor3 = Color3.fromRGB(4, 255, 0)
+	TextButton_Roundify_12px.ScaleType = Enum.ScaleType.Slice
+	TextButton_Roundify_12px.SliceCenter = Rect.new(100, 100, 100, 100)
+	TextButton_Roundify_12px.SliceScale = 0.120
 
-NO.Name = "NO"
-NO.Parent = SwitchLoader
-NO.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-NO.BackgroundTransparency = 1.000
-NO.BorderSizePixel = 0
-NO.Position = UDim2.new(0.558613181, 0, 0.747812569, 0)
-NO.Size = UDim2.new(0, 82, 0, 35)
-NO.ZIndex = 2
-NO.Font = Enum.Font.SciFi
-NO.Text = "NO"
-NO.TextColor3 = Color3.fromRGB(0, 0, 0)
-NO.TextScaled = true
-NO.TextSize = 14.000
-NO.TextWrapped = true
+	NO.Name = "NO"
+	NO.Parent = SwitchLoader
+	NO.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	NO.BackgroundTransparency = 1.000
+	NO.BorderSizePixel = 0
+	NO.Position = UDim2.new(0.558613181, 0, 0.747812569, 0)
+	NO.Size = UDim2.new(0, 82, 0, 35)
+	NO.ZIndex = 2
+	NO.Font = Enum.Font.SciFi
+	NO.Text = "NO"
+	NO.TextColor3 = Color3.fromRGB(0, 0, 0)
+	NO.TextScaled = true
+	NO.TextSize = 14.000
+	NO.TextWrapped = true
 
-TextButton_Roundify_12px_2.Name = "TextButton_Roundify_12px"
-TextButton_Roundify_12px_2.Parent = NO
-TextButton_Roundify_12px_2.Active = true
-TextButton_Roundify_12px_2.AnchorPoint = Vector2.new(0.5, 0.5)
-TextButton_Roundify_12px_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_Roundify_12px_2.BackgroundTransparency = 1.000
-TextButton_Roundify_12px_2.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextButton_Roundify_12px_2.Selectable = true
-TextButton_Roundify_12px_2.Size = UDim2.new(1, 0, 1, 0)
-TextButton_Roundify_12px_2.Image = "rbxassetid://3570695787"
-TextButton_Roundify_12px_2.ImageColor3 = Color3.fromRGB(255, 0, 4)
-TextButton_Roundify_12px_2.ScaleType = Enum.ScaleType.Slice
-TextButton_Roundify_12px_2.SliceCenter = Rect.new(100, 100, 100, 100)
-TextButton_Roundify_12px_2.SliceScale = 0.120
+	TextButton_Roundify_12px_2.Name = "TextButton_Roundify_12px"
+	TextButton_Roundify_12px_2.Parent = NO
+	TextButton_Roundify_12px_2.Active = true
+	TextButton_Roundify_12px_2.AnchorPoint = Vector2.new(0.5, 0.5)
+	TextButton_Roundify_12px_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextButton_Roundify_12px_2.BackgroundTransparency = 1.000
+	TextButton_Roundify_12px_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+	TextButton_Roundify_12px_2.Selectable = true
+	TextButton_Roundify_12px_2.Size = UDim2.new(1, 0, 1, 0)
+	TextButton_Roundify_12px_2.Image = "rbxassetid://3570695787"
+	TextButton_Roundify_12px_2.ImageColor3 = Color3.fromRGB(255, 0, 4)
+	TextButton_Roundify_12px_2.ScaleType = Enum.ScaleType.Slice
+	TextButton_Roundify_12px_2.SliceCenter = Rect.new(100, 100, 100, 100)
+	TextButton_Roundify_12px_2.SliceScale = 0.120
 
--- Scripts:
+	-- Scripts:
 
-local function PJJYEM_fake_script() -- YES.LocalScript 
-	local script = Instance.new('LocalScript', YES)
+	local function PJJYEM_fake_script() -- YES.LocalScript 
+		local script = Instance.new('LocalScript', YES)
 
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Visible = false
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader", true))()
-	end)
-end
-coroutine.wrap(PJJYEM_fake_script)()
-local function ZGKLCU_fake_script() -- NO.LocalScript 
-	local script = Instance.new('LocalScript', NO)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent:Destroy()
-	end)
-end
-coroutine.wrap(ZGKLCU_fake_script)()
-local function EMOIX_fake_script() -- BHSwitchLoader.SynProtect 
-	local script = Instance.new('LocalScript', BHSwitchLoader)
-
-	if syn.protect_gui then
-		script.Parent.Parent = game:GetService("CoreGui")
-		wait(1)
-		syn.protect_gui(script.Parent)
-	else
-		error("Exploit unsupported.")
+		script.Parent.MouseButton1Click:Connect(function()
+			script.Parent.Parent.Visible = false
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader", true))()
+		end)
 	end
-	
+	coroutine.wrap(PJJYEM_fake_script)()
+	local function ZGKLCU_fake_script() -- NO.LocalScript 
+		local script = Instance.new('LocalScript', NO)
+
+		script.Parent.MouseButton1Click:Connect(function()
+			script.Parent.Parent.Parent:Destroy()
+		end)
+	end
+	coroutine.wrap(ZGKLCU_fake_script)()
+	local function EMOIX_fake_script() -- BHSwitchLoader.SynProtect 
+		local script = Instance.new('LocalScript', BHSwitchLoader)
+
+		if syn.protect_gui then
+			script.Parent.Parent = game:GetService("CoreGui")
+			wait(1)
+			syn.protect_gui(script.Parent)
+		else
+			error("Exploit unsupported.")
+		end
+
+	end
+	coroutine.wrap(EMOIX_fake_script)()
 end
-coroutine.wrap(EMOIX_fake_script)()
