@@ -155,7 +155,7 @@ else
 
 		script.Parent.MouseButton1Click:Connect(function()
 			if not alrclicked then
-				alrclicked == true
+				alrclicked = true
 				script.Parent.Parent.Visible = false
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader", true))()
 			end
