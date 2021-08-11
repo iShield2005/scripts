@@ -1,22 +1,23 @@
+-- Mad City CRASH (Takes about 1-2 minutes)
 repeat
 	wait()
 until game:IsLoaded()
 game:GetService("StarterGui"):SetCore("SendNotification",{
-				Icon = "rbxthumb://type=Asset&id=5895361327&w=150&h=150",
-				Title = "          CRASHING",
-				Text = "          Made by iShield.\n               Please, wait.",
-				Duration = 15,
-			})
+	Icon = "rbxthumb://type=Asset&id=5895361327&w=150&h=150",
+	Title = "          CRASHING",
+	Text = "          Made by iShield.\n               Please, wait.",
+	Duration = 15,
+})
 wait(5)
 for _,v in pairs(workspace:GetDescendants()) do
-if v.ClassName == "Part"
-or v.ClassName == "SpawnLocation"
-or v.ClassName == "WedgePart"
-or v.ClassName == "Terrain"
-or v.ClassName == "MeshPart" then
-v.BrickColor = BrickColor.new(155, 155, 155)
-v.Material = "Plastic"
-end
+	if v.ClassName == "Part"
+	or v.ClassName == "SpawnLocation"
+	or v.ClassName == "WedgePart"
+	or v.ClassName == "Terrain"
+	or v.ClassName == "MeshPart" then
+		v.BrickColor = BrickColor.new(155, 155, 155)
+		v.Material = "Plastic"
+	end
 end
 local function serverHop()
     print("Cambiando de servidor...")
@@ -86,50 +87,8 @@ coroutine.wrap(function()
     [1] = "SpawnVehicle",
     [2] = "Camaro"
     }
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
-    game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
+    for i=0,30 do
+    	game:GetService("ReplicatedStorage").Event:FireServer(unpack(args))
     end
 end
 end)()
