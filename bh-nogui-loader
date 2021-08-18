@@ -1,11 +1,12 @@
 -- Changelog:
 -- New exploits are supported:
--- Electron [90%]
+-- Electron [50%]
+-- KRNL [100%]
 local http_request = http_request
 if IsElectron then
 	http_request = httprequest
 else
-	if syn.request then 
+	if syn then 
 		http_request = syn.request
 	elseif SENTINEL_V2 then
 		http_request = request
