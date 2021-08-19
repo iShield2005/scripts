@@ -1,0 +1,136 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local BHLoader = Instance.new("ScreenGui")
+local Frame = Instance.new("ImageLabel")
+local ImageLabel = Instance.new("ImageLabel")
+local Broken = Instance.new("ImageLabel")
+
+--Properties:
+
+BHLoader.Name = "BHLoader"
+BHLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+BHLoader.ResetOnSpawn = false
+
+Frame.Name = "Frame"
+Frame.Parent = BHLoader
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BackgroundTransparency = 1.000
+Frame.ClipsDescendants = true
+Frame.Position = UDim2.new(0.499306232, 0, 0.499005973, 0)
+Frame.Size = UDim2.new(0, 307, 0, 165)
+Frame.ZIndex = -1
+Frame.Image = "rbxassetid://3570695787"
+Frame.ImageTransparency = 0.400
+Frame.ScaleType = Enum.ScaleType.Slice
+Frame.SliceCenter = Rect.new(100, 100, 100, 100)
+Frame.SliceScale = 0.120
+
+ImageLabel.Parent = Frame
+ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.Position = UDim2.new(0.499290437, 0, 0.497659624, 0)
+ImageLabel.Size = UDim2.new(0, 290, 0, 161)
+ImageLabel.Image = "rbxassetid://7284981787"
+
+Broken.Name = "Broken"
+Broken.Parent = Frame
+Broken.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Broken.BackgroundTransparency = 1.000
+Broken.Size = UDim2.new(0, 307, 0, 165)
+Broken.Image = "rbxassetid://7285146452"
+Broken.ImageTransparency = 1.000
+
+-- Scripts:
+
+local function ABOYT_fake_script() -- BHLoader.LocalScript 
+	local script = Instance.new('LocalScript', BHLoader)
+
+	local TweenService = game:GetService("TweenService")
+	local Object = script.Parent -- The object you want to tween.
+	
+	local tweenInfo = TweenInfo.new(
+		1, -- The time the tween takes to complete
+		Enum.EasingStyle.Quint, -- The tween style.
+		Enum.EasingDirection.Out, -- EasingDirection
+		0, -- How many times you want the tween to repeat. If you make it less than 0 it will repeat forever.
+		false, -- Reverse?
+		0 -- Delay
+	)
+	
+	
+	-- Blur size should be 24.
+	local blur = Instance.new("BlurEffect")
+	blur.Size = 0
+	blur.Parent = game.Workspace.CurrentCamera
+	blur.Name = "BHINTRO"
+	script.Parent.Enabled = true
+	local frame = script.Parent.Frame
+	local ogFrameSize = frame.Size
+	frame.Size = UDim2.new(0,0,0,0)
+	local logo = script.Parent.Frame.ImageLabel
+	frame.ImageTransparency = 1
+	logo.ImageTransparency = 1
+	function fallEffect(uiObject)
+		uiObject:TweenPosition(UDim2.new(0.5, 0,1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 5)
+		for i=0, 24 do
+			blur.Size = blur.Size - 1
+			frame.ImageTransparency = frame.ImageTransparency + 0.0416
+			logo.ImageTransparency = logo.ImageTransparency + 0.0416
+			script.Parent.Frame.Broken.ImageTransparency = script.Parent.Frame.Broken.ImageTransparency + 0.0416
+			wait()
+		end
+	end
+	function tweensizesync(uiobject, speed, finaludim)
+		uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
+		wait(speed + 0.1)
+	end
+	function tweensizeasync(uiobject, speed, finaludim)
+		uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
+	end
+	for i=0,24 do
+		blur.Size = blur.Size + 1
+		wait()
+	end
+	tweensizeasync(frame, 1, ogFrameSize)
+	for i=0,20 do
+		wait()
+		frame.ImageTransparency = frame.ImageTransparency - 0.05
+		logo.ImageTransparency = logo.ImageTransparency - 0.05
+	end
+	wait(1)
+	for i=0,10 do
+		wait()
+		script.Parent.Frame.Broken.ImageTransparency = script.Parent.Frame.Broken.ImageTransparency - .1
+	end
+	for i=0,15 do
+		wait()
+		frame.Rotation = frame.Rotation + 1
+	end
+	for i=0,5 do
+		wait()
+		frame.Rotation = frame.Rotation - 1
+	end
+	for i=0,5 do
+		wait()
+		frame.Rotation = frame.Rotation + 1
+	end
+	for i=0,5 do
+		wait()
+		frame.Rotation = frame.Rotation - 1
+	end
+	for i=0,10 do
+		wait()
+		frame.Rotation = frame.Rotation + 1
+	end
+	fallEffect(frame)
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader'))()
+	
+	
+	
+end
+coroutine.wrap(ABOYT_fake_script)()
