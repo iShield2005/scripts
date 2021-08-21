@@ -134,6 +134,7 @@ LBackground.BackgroundTransparency = 1.000
 LBackground.ClipsDescendants = true
 LBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
 LBackground.Size = UDim2.new(0, 175, 0, 162)
+LBackground.Visible = false
 LBackground.ZIndex = 49
 LBackground.Image = "rbxassetid://3570695787"
 LBackground.ImageColor3 = Color3.fromRGB(24, 24, 24)
@@ -143,7 +144,7 @@ LBackground.SliceScale = 0.120
 
 -- Scripts:
 
-local function UNJH_fake_script() -- BHLoader.LocalScript 
+local function ZULCA_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -274,16 +275,16 @@ local function UNJH_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(UNJH_fake_script)()
-local function HSWVY_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(ZULCA_fake_script)()
+local function IHZZUXL_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(HSWVY_fake_script)()
-local function KCKVE_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(IHZZUXL_fake_script)()
+local function VPDMTQT_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -437,4 +438,4 @@ local function KCKVE_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(KCKVE_fake_script)()
+coroutine.wrap(VPDMTQT_fake_script)()
