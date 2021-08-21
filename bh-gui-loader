@@ -183,7 +183,7 @@ local function PCWE_fake_script() -- BHLoader.LocalScript
 			script.Parent.background.BackgroundTransparency = script.Parent.background.BackgroundTransparency + 0.0416
 			for i,v in pairs(script.Parent.background:GetChildren()) do
 				if v.Name == "orange" then
-					v.BackgroundTransparency = v.BackgroundTransparency + 0.0416
+					v.BackgroundTransparency = v.BackgroundTransparency + 0.05
 				end
 			end
 		end
