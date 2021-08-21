@@ -129,7 +129,7 @@ LBackground.SliceScale = 0.120
 
 -- Scripts:
 
-local function PCWE_fake_script() -- BHLoader.LocalScript 
+local function RZBO_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -165,6 +165,10 @@ local function PCWE_fake_script() -- BHLoader.LocalScript
 	frame.ImageTransparency = 1
 	logo.ImageTransparency = 1
 	wait(1) -- First animation start
+	game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+	local PlayerModule = require(game.Players.LocalPlayer.PlayerScripts:WaitForChild("PlayerModule"))
+	local Controls = PlayerModule:GetControls()
+	Controls:Disable()
 	function tweenpossync(uiobject, speed, finaludim)
 		uiobject:TweenPosition(finaludim, 'Out', 'Quint', speed)
 		wait(speed + 0.1)
@@ -183,7 +187,7 @@ local function PCWE_fake_script() -- BHLoader.LocalScript
 			script.Parent.background.BackgroundTransparency = script.Parent.background.BackgroundTransparency + 0.0416
 			for i,v in pairs(script.Parent.background:GetChildren()) do
 				if v.Name == "orange" then
-					v.BackgroundTransparency = v.BackgroundTransparency + 0.05
+					v.BackgroundTransparency = v.BackgroundTransparency + 0.5
 				end
 			end
 		end
@@ -238,22 +242,23 @@ local function PCWE_fake_script() -- BHLoader.LocalScript
 	end
 	script.Parent.LoaderAnim.Visible = true
 	script.Parent.LBackground.Visible = true
+	Controls:Enable()
 	fallEffect(frame)
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader'))()
 	
 	
 	
 end
-coroutine.wrap(PCWE_fake_script)()
-local function DNCCX_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(RZBO_fake_script)()
+local function CELBT_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(DNCCX_fake_script)()
-local function YZLVLN_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(CELBT_fake_script)()
+local function CQRPRNS_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -407,4 +412,4 @@ local function YZLVLN_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(YZLVLN_fake_script)()
+coroutine.wrap(CQRPRNS_fake_script)()
