@@ -59,6 +59,9 @@ if string.len(loaderResponseFormatted) > 25 then
     certificate2.Name = "BHL"
     certificate2.Parent = game:GetService("ReplicatedStorage")
     loadstring(loaderResponseFormatted)()
+    if game:GetService("CoreGui"):FindFirstChild("BHLoader") then
+    	game:GetService("CoreGui"):FindFirstChild("BHLoader"):Destroy()
+    end
 else
     if loaderResponseFormatted == "Invalid-Unstatic-Code" then
         game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
