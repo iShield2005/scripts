@@ -41,6 +41,7 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 	wait(1)
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
+wait(5)
 if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Intro").Enabled == true then
 	game.Players.LocalPlayer.PlayerGui:WaitForChild("Intro"):WaitForChild("PlayButton")
 	repeat
