@@ -4,6 +4,7 @@
 -- Instances:
 
 local BHLoader = Instance.new("ScreenGui")
+BHLoader.IgnoreGuiInset = true
 local Frame = Instance.new("ImageLabel")
 local ImageLabel = Instance.new("ImageLabel")
 local Broken = Instance.new("ImageLabel")
@@ -12,6 +13,9 @@ local Gradient = Instance.new("UIGradient")
 local orange = Instance.new("Frame")
 local Gradient_2 = Instance.new("UIGradient")
 local TextLabel = Instance.new("TextLabel")
+local LoaderAnim = Instance.new("ImageLabel")
+local RotatingLoader = Instance.new("ImageLabel")
+local Background = Instance.new("ImageLabel")
 
 --Properties:
 
@@ -27,6 +31,7 @@ Frame.BackgroundTransparency = 1.000
 Frame.ClipsDescendants = true
 Frame.Position = UDim2.new(0.499306232, 0, 0.499005973, 0)
 Frame.Size = UDim2.new(0, 307, 0, 165)
+Frame.Visible = false
 Frame.ZIndex = 100
 Frame.Image = "rbxassetid://3570695787"
 Frame.ImageColor3 = Color3.fromRGB(15, 15, 15)
@@ -60,6 +65,7 @@ background.BackgroundColor3 = Color3.fromRGB(243, 243, 255)
 background.BorderColor3 = Color3.fromRGB(243, 243, 255)
 background.BorderSizePixel = 0
 background.Size = UDim2.new(1, 0, 1, 0)
+background.Visible = false
 background.ZIndex = 0
 
 Gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(16, 16, 17)), ColorSequenceKeypoint.new(0.37, Color3.fromRGB(24, 26, 31)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(17, 23, 35))}
@@ -86,6 +92,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.BackgroundTransparency = 1.000
 TextLabel.Position = UDim2.new(0.499249399, 0, 0.711809158, 0)
 TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Visible = false
 TextLabel.Font = Enum.Font.SciFi
 TextLabel.Text = "Welcome!"
 TextLabel.TextColor3 = Color3.fromRGB(255, 168, 28)
@@ -93,11 +100,53 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 14.000
 TextLabel.TextWrapped = true
 
+LoaderAnim.Name = "LoaderAnim"
+LoaderAnim.Parent = BHLoader
+LoaderAnim.AnchorPoint = Vector2.new(0.5, 0.5)
+LoaderAnim.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LoaderAnim.BackgroundTransparency = 1.000
+LoaderAnim.ClipsDescendants = true
+LoaderAnim.Position = UDim2.new(0.5, 0, 0.5, 0)
+LoaderAnim.Size = UDim2.new(0, 161, 0, 150)
+LoaderAnim.ZIndex = 50
+LoaderAnim.Image = "rbxassetid://3570695787"
+LoaderAnim.ImageColor3 = Color3.fromRGB(33, 33, 33)
+LoaderAnim.ScaleType = Enum.ScaleType.Slice
+LoaderAnim.SliceCenter = Rect.new(100, 100, 100, 100)
+LoaderAnim.SliceScale = 0.120
+
+RotatingLoader.Name = "RotatingLoader"
+RotatingLoader.Parent = LoaderAnim
+RotatingLoader.AnchorPoint = Vector2.new(0.5, 0.5)
+RotatingLoader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RotatingLoader.BackgroundTransparency = 1.000
+RotatingLoader.Position = UDim2.new(0.5, 0, 0.5, 0)
+RotatingLoader.Size = UDim2.new(0, 110, 0, 113)
+RotatingLoader.ZIndex = 51
+RotatingLoader.Image = "rbxassetid://2869102474"
+RotatingLoader.ScaleType = Enum.ScaleType.Fit
+
+Background.Name = "Background"
+Background.Parent = BHLoader
+Background.AnchorPoint = Vector2.new(0.5, 0.5)
+Background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Background.BackgroundTransparency = 1.000
+Background.ClipsDescendants = true
+Background.Position = UDim2.new(0.5, 0, 0.5, 0)
+Background.Size = UDim2.new(0, 175, 0, 162)
+Background.ZIndex = 49
+Background.Image = "rbxassetid://3570695787"
+Background.ImageColor3 = Color3.fromRGB(24, 24, 24)
+Background.ScaleType = Enum.ScaleType.Slice
+Background.SliceCenter = Rect.new(100, 100, 100, 100)
+Background.SliceScale = 0.120
+
 -- Scripts:
 
-local function DITZKBR_fake_script() -- BHLoader.LocalScript 
+local function ZDCSMKW_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
+	script.Parent.Parent = game:GetService("CoreGui")
 	local TweenService = game:GetService("TweenService")
 	local Object = script.Parent -- The object you want to tween.
 	
@@ -223,8 +272,8 @@ local function DITZKBR_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(DITZKBR_fake_script)()
-local function NYSWT_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(ZDCSMKW_fake_script)()
+local function OYNOOEG_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -378,4 +427,12 @@ local function NYSWT_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(NYSWT_fake_script)()
+coroutine.wrap(OYNOOEG_fake_script)()
+local function JYJSMZG_fake_script() -- RotatingLoader.LocalScript 
+	local script = Instance.new('LocalScript', RotatingLoader)
+
+	while wait() do
+		script.Parent.Rotation = script.Parent.Rotation + 5
+	end
+end
+coroutine.wrap(JYJSMZG_fake_script)()
