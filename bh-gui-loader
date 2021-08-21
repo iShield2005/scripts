@@ -5,7 +5,6 @@
 
 local BHLoader = Instance.new("ScreenGui")
 BHLoader.IgnoreGuiInset = true
-local TextLabel = Instance.new("TextLabel")
 local LoaderAnim = Instance.new("ImageLabel")
 local RotatingLoader = Instance.new("ImageLabel")
 local Frame = Instance.new("ImageLabel")
@@ -22,20 +21,6 @@ local LBackground = Instance.new("ImageLabel")
 BHLoader.Name = "BHLoader"
 BHLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 BHLoader.ResetOnSpawn = false
-
-TextLabel.Parent = BHLoader
-TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0.499249399, 0, 0.711809158, 0)
-TextLabel.Size = UDim2.new(0.266666681, 0, 0.0994035751, 0)
-TextLabel.ZIndex = 70
-TextLabel.Font = Enum.Font.SciFi
-TextLabel.Text = "Welcome!"
-TextLabel.TextColor3 = Color3.fromRGB(255, 168, 28)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 14.000
-TextLabel.TextWrapped = true
 
 LoaderAnim.Name = "LoaderAnim"
 LoaderAnim.Parent = BHLoader
@@ -144,7 +129,7 @@ LBackground.SliceScale = 0.120
 
 -- Scripts:
 
-local function ZULCA_fake_script() -- BHLoader.LocalScript 
+local function PCWE_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -174,15 +159,12 @@ local function ZULCA_fake_script() -- BHLoader.LocalScript
 	blur.Name = "BHINTRO"
 	script.Parent.Enabled = true
 	local frame = script.Parent.Frame
-	local welcome = script.Parent.TextLabel
 	local ogFrameSize = frame.Size
 	frame.Size = UDim2.new(0,0,0,0)
 	local logo = script.Parent.Frame.ImageLabel
 	frame.ImageTransparency = 1
 	logo.ImageTransparency = 1
-	welcome.Position = UDim2.new(0.498, 0,0.499, 0)
-	welcome.TextTransparency = 1
-	wait(5) -- First animation start
+	wait(1) -- First animation start
 	function tweenpossync(uiobject, speed, finaludim)
 		uiobject:TweenPosition(finaludim, 'Out', 'Quint', speed)
 		wait(speed + 0.1)
@@ -230,19 +212,6 @@ local function ZULCA_fake_script() -- BHLoader.LocalScript
 		logo.ImageTransparency = logo.ImageTransparency - 0.05
 	end
 	wait(5) -- First animation end
-	tweenpossync(frame, 1, UDim2.new(0.499, 0,0.386, 0))
-	tweenposasync(welcome, 1, UDim2.new(0.498, 0,0.618, 0))
-	for i = 0,10 do
-		wait()
-		welcome.TextTransparency = welcome.TextTransparency - .1
-	end
-	wait(2)
-	tweenposasync(welcome, 1, UDim2.new(0.498, 0,0.499, 0))
-	for i = 0, 10 do
-		wait()
-		welcome.TextTransparency = welcome.TextTransparency + .1
-	end
-	tweenpossync(frame, 1, UDim2.new(0.499, 0,0.499, 0))
 	for i=0,10 do
 		wait()
 		script.Parent.Frame.Broken.ImageTransparency = script.Parent.Frame.Broken.ImageTransparency - .1
@@ -267,24 +236,24 @@ local function ZULCA_fake_script() -- BHLoader.LocalScript
 		wait()
 		frame.Rotation = frame.Rotation + 1
 	end
-	fallEffect(frame)
 	script.Parent.LoaderAnim.Visible = true
 	script.Parent.LBackground.Visible = true
+	fallEffect(frame)
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader'))()
 	
 	
 	
 end
-coroutine.wrap(ZULCA_fake_script)()
-local function IHZZUXL_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(PCWE_fake_script)()
+local function DNCCX_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(IHZZUXL_fake_script)()
-local function VPDMTQT_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(DNCCX_fake_script)()
+local function YZLVLN_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -438,4 +407,4 @@ local function VPDMTQT_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(VPDMTQT_fake_script)()
+coroutine.wrap(YZLVLN_fake_script)()
