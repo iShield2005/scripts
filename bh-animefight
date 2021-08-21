@@ -3,9 +3,9 @@ if not (syn or SENTINEL_V2 or IsElectron) then
 end
 local function serverHop()
 	if syn then
-		syn.queue_on_teleport("loadstring(game:HttpGet('https://sc-shd-ws.000webhostapp.com/thunderiders/whitelist/script'))()")
+		syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/iShield2005/scripts/master/bh-animefight'))()")
 	elseif queue_on_teleport then
-		queue_on_teleport("loadstring(game:HttpGet('https://sc-shd-ws.000webhostapp.com/thunderiders/whitelist/script'))()")
+		queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/iShield2005/scripts/master/bh-animefight'))()")
 	end
 	wait(1)
 	local x = {}
