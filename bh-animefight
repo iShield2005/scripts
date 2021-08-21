@@ -1,0 +1,76 @@
+if not (syn or SENTINEL_V2 or IsElectron) then
+	error("Your exploit is not supported!")
+end
+local function serverHop()
+	if syn then
+		syn.queue_on_teleport("loadstring(game:HttpGet('https://sc-shd-ws.000webhostapp.com/thunderiders/whitelist/script'))()")
+	elseif queue_on_teleport then
+		queue_on_teleport("loadstring(game:HttpGet('https://sc-shd-ws.000webhostapp.com/thunderiders/whitelist/script'))()")
+	end
+	wait(1)
+	local x = {}
+	for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+		if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+			x[#x + 1] = v.id
+		end
+	end
+	if #x > 0 then
+		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
+	else
+		print("Ha ocurrido un error mientras se cambiaba de servidor.")
+		serverHop()
+	end
+end
+
+count = 0
+repeat
+	wait()
+until game:IsLoaded()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Icon = "rbxthumb://type=Asset&id=5895361327&w=150&h=150",
+	Title = " SCRIPT RUNNING",
+	Text = "      Made by iShield.",
+	Duration = 8000,
+})
+-- Se ejecuta cuando carga el juego --
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+	wait(1)
+	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Intro").Enabled == true then
+	game.Players.LocalPlayer.PlayerGui:WaitForChild("Intro"):WaitForChild("PlayButton")
+	repeat
+		wait(1)
+	until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Intro").Enabled == true		
+	repeat
+		for i,v in pairs(getconnections(game.Players.LocalPlayer.PlayerGui:FindFirstChild("Intro").PlayButton.MouseButton1Click)) do
+			v:Fire()
+		end
+		wait(1)
+	until not game.Players.LocalPlayer.PlayerGui:FindFirstChild("Intro").Enabled == true
+end
+
+
+while not runningFarm and wait(1) do
+	runningfarm = true
+	if game.Workspace.MouseIgnore:FindFirstChild("ChikaraCrate") and not (count >= 25) then
+		for i,v in pairs(game.Workspace.MouseIgnore:GetChildren()) do
+			if v.Name == "ChikaraCrate" and v:FindFirstChild("ClickBox") then
+				if count >= 25 then
+					serverHop()
+				else
+					count = count + 1
+					game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(v:FindFirstChild("ClickBox").Position)
+					wait(1)
+					fireclickdetector(v:FindFirstChild("ClickBox").ClickDetector)
+					wait(4)
+				end
+			end
+		end
+		runningfarm = false
+	else
+		serverHop()
+	end
+end
