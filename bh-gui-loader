@@ -16,6 +16,8 @@ local LBackground = Instance.new("ImageLabel")
 local LoaderAnim = Instance.new("ImageLabel")
 local RotatingLoader = Instance.new("ImageLabel")
 local Loaded = Instance.new("ImageLabel")
+local NotSupported = Instance.new("ImageLabel")
+local TextToShow = Instance.new("TextLabel")
 
 --Properties:
 
@@ -31,6 +33,7 @@ Frame.BackgroundTransparency = 1.000
 Frame.ClipsDescendants = true
 Frame.Position = UDim2.new(0.499306232, 0, 0.499005973, 0)
 Frame.Size = UDim2.new(0, 307, 0, 165)
+Frame.Visible = false
 Frame.ZIndex = 100
 Frame.Image = "rbxassetid://3570695787"
 Frame.ImageColor3 = Color3.fromRGB(15, 15, 15)
@@ -64,6 +67,7 @@ background.BackgroundColor3 = Color3.fromRGB(243, 243, 255)
 background.BorderColor3 = Color3.fromRGB(243, 243, 255)
 background.BorderSizePixel = 0
 background.Size = UDim2.new(1, 0, 1, 0)
+background.Visible = false
 background.ZIndex = 60
 
 Gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(16, 16, 17)), ColorSequenceKeypoint.new(0.37, Color3.fromRGB(24, 26, 31)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(17, 23, 35))}
@@ -93,7 +97,6 @@ LBackground.BackgroundTransparency = 1.000
 LBackground.ClipsDescendants = true
 LBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
 LBackground.Size = UDim2.new(0, 175, 0, 162)
-LBackground.Visible = false
 LBackground.ZIndex = 49
 LBackground.Image = "rbxassetid://3570695787"
 LBackground.ImageColor3 = Color3.fromRGB(24, 24, 24)
@@ -138,9 +141,35 @@ Loaded.ZIndex = 51
 Loaded.Image = "rbxassetid://1682537696"
 Loaded.ScaleType = Enum.ScaleType.Fit
 
+NotSupported.Name = "NotSupported"
+NotSupported.Parent = LoaderAnim
+NotSupported.AnchorPoint = Vector2.new(0.5, 0.5)
+NotSupported.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NotSupported.BackgroundTransparency = 1.000
+NotSupported.Position = UDim2.new(0.5, 0, 0.5, 0)
+NotSupported.Size = UDim2.new(0, 110, 0, 113)
+NotSupported.ZIndex = 51
+NotSupported.Image = "rbxassetid://5107154082"
+NotSupported.ScaleType = Enum.ScaleType.Fit
+
+TextToShow.Name = "TextToShow"
+TextToShow.Parent = LoaderAnim
+TextToShow.AnchorPoint = Vector2.new(0.5, 0.5)
+TextToShow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextToShow.BackgroundTransparency = 1.000
+TextToShow.Position = UDim2.new(0.496894419, 0, 0.936666667, 0)
+TextToShow.Size = UDim2.new(0, 149, 0, 18)
+TextToShow.ZIndex = 55
+TextToShow.Font = Enum.Font.SciFi
+TextToShow.Text = "This game is not supported!"
+TextToShow.TextColor3 = Color3.fromRGB(255, 0, 0)
+TextToShow.TextScaled = true
+TextToShow.TextSize = 14.000
+TextToShow.TextWrapped = true
+
 -- Scripts:
 
-local function HJAXKKO_fake_script() -- BHLoader.LocalScript 
+local function NMDLRZ_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -260,8 +289,8 @@ local function HJAXKKO_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(HJAXKKO_fake_script)()
-local function TXBFH_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(NMDLRZ_fake_script)()
+local function VPOZB_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -415,16 +444,16 @@ local function TXBFH_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(TXBFH_fake_script)()
-local function GKARC_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(VPOZB_fake_script)()
+local function JWDDCMZ_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(GKARC_fake_script)()
-local function BULA_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(JWDDCMZ_fake_script)()
+local function DOSJK_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -437,10 +466,10 @@ local function BULA_fake_script() -- LoaderAnim.LoadedAnim
 	-- Waiter
 	repeat
 		wait()
-	until script.Parent.Parent:FindFirstChild("DoLoadedAnimation")
-	if script.Parent.Parent:FindFirstChild("DoLoadedAnimation") then
+	until script.Parent.Parent.Parent:FindFirstChild("DoLoadedAnimation")
+	if script.Parent.Parent.Parent:FindFirstChild("DoLoadedAnimation") then
 		-- Variables
-		local foundTextbox = script.Parent.Parent:FindFirstChild("DoLoadedAnimation")
+		local foundTextbox = script.Parent.Parent.Parent:FindFirstChild("DoLoadedAnimation")
 		local textToShow = foundTextbox.Text
 		local rotatingLoader = script.Parent.RotatingLoader
 		-- Functions
@@ -475,4 +504,62 @@ local function BULA_fake_script() -- LoaderAnim.LoadedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(BULA_fake_script)()
+coroutine.wrap(DOSJK_fake_script)()
+local function PNGUV_fake_script() -- LoaderAnim.NotSupportedAnim 
+	local script = Instance.new('LocalScript', LoaderAnim)
+
+	-- Pre-Variables
+	local errorIcon = script.Parent.NotSupported
+	local ogErrorIconSize = errorIcon.Size
+	local allBackground = script.Parent.Parent.Parent.LBackground
+	local textToShowTextLabel = script.Parent.TextToShow
+	textToShowTextLabel.TextTransparency = 1
+	errorIcon.Size = UDim2.new(0,0,0)
+	errorIcon.Visible = false
+	errorIcon.ImageTransparency = 1
+	-- Waiter
+	repeat
+		wait()
+	until script.Parent.Parent.Parent:FindFirstChild("DoNotSupportedAnimation")
+	if script.Parent.Parent.Parent:FindFirstChild("DoNotSupportedAnimation") then
+		-- Variables
+		local foundTextbox = script.Parent.Parent.Parent:FindFirstChild("DoNotSupportedAnimation")
+		local textToShow = foundTextbox.Text
+		local rotatingLoader = script.Parent.RotatingLoader
+		-- Functions
+		function tweenpossync(uiobject, speed, finaludim)
+			uiobject:TweenPosition(finaludim, 'Out', 'Quint', speed)
+			wait(speed + 0.1)
+		end
+		function tweenposasync(uiobject, speed, finaludim)
+			uiobject:TweenPosition(finaludim, 'Out', 'Quint', speed)
+		end
+		function tweensizesync(uiobject, speed, finaludim)
+			uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
+			wait(speed + 0.1)
+		end
+		function tweensizeasync(uiobject, speed, finaludim)
+			uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
+		end
+		-- Animation
+		for i=0,10 do
+			wait()
+			rotatingLoader.ImageTransparency = rotatingLoader.ImageTransparency + .1
+		end
+		tweensizeasync(errorIcon, 1, ogErrorIconSize)
+		for i=0,10 do
+			wait()
+			errorIcon.ImageTransparency = errorIcon.ImageTransparency - .1
+		end
+		for i=0,10 do
+			wait()
+			textToShowTextLabel.TextTransparency = textToShowTextLabel.TextTransparency - .1
+		end
+		wait(1)
+		tweensizesync(allBackground,1,UDim2.new(0,0,0))
+		script.Parent.Parent.Parent:Destroy()
+	else
+		game.Players.LocalPlayer:Kick("Unknown error!")
+	end
+end
+coroutine.wrap(PNGUV_fake_script)()
