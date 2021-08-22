@@ -5,371 +5,362 @@ repeat
 	wait()
 until game.Players.LocalPlayer.Team.Name ~= "Unauthorized"
 if not game:GetService("CoreGui"):FindFirstChild("Area02Main") then
-	local BHSwitchLoader = Instance.new("ScreenGui")
-	local SwitchLoader = Instance.new("ImageLabel")
-	local Frame = Instance.new("Frame")
-	local TextLabel = Instance.new("TextLabel")
-	local TextLabel_2 = Instance.new("TextLabel")
-	local Frame_2 = Instance.new("ImageLabel")
-	local YES = Instance.new("TextButton")
-	local TextButton_Roundify_12px = Instance.new("ImageLabel")
-	local NO = Instance.new("TextButton")
-	local TextButton_Roundify_12px_2 = Instance.new("ImageLabel")
-	local background = Instance.new("Frame")
-	local Gradient = Instance.new("UIGradient")
-	local orange = Instance.new("Frame")
-	local Gradient_2 = Instance.new("UIGradient")
-	local Shadow = Instance.new("ImageLabel")
+	-- Gui to Lua
+-- Version: 3.2
 
-	--Properties:
+-- Instances:
 
-	BHSwitchLoader.Name = "BHSwitchLoader"
-	BHSwitchLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-	BHSwitchLoader.ResetOnSpawn = false
+local BHSwitchLoader = Instance.new("ScreenGui")
+local SwitchLoader = Instance.new("ImageLabel")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local Frame_2 = Instance.new("ImageLabel")
+local YES = Instance.new("TextButton")
+local TextButton_Roundify_12px = Instance.new("ImageLabel")
+local NO = Instance.new("TextButton")
+local TextButton_Roundify_12px_2 = Instance.new("ImageLabel")
+local background = Instance.new("Frame")
+local Gradient = Instance.new("UIGradient")
+local orange = Instance.new("Frame")
+local Gradient_2 = Instance.new("UIGradient")
 
-	SwitchLoader.Name = "SwitchLoader"
-	SwitchLoader.Parent = BHSwitchLoader
-	SwitchLoader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	SwitchLoader.BackgroundTransparency = 1.000
-	SwitchLoader.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	SwitchLoader.Position = UDim2.new(0, 35, 1, -300)
-	SwitchLoader.Size = UDim2.new(0, 229, 0, 180)
-	SwitchLoader.ImageColor3 = Color3.fromRGB(17, 17, 17)
-	SwitchLoader.ScaleType = Enum.ScaleType.Slice
-	SwitchLoader.SliceCenter = Rect.new(100, 100, 100, 100)
-	SwitchLoader.SliceScale = 0.167
+--Properties:
 
-	Frame.Parent = SwitchLoader
-	Frame.BackgroundColor3 = Color3.fromRGB(136, 0, 0)
-	Frame.Position = UDim2.new(0.142030537, 0, 0.129999995, 0)
-	Frame.Size = UDim2.new(0, 156, 0, 1)
+BHSwitchLoader.Name = "BHSwitchLoader"
+BHSwitchLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+BHSwitchLoader.ResetOnSpawn = false
 
-	TextLabel.Parent = Frame
-	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel.BackgroundTransparency = 1.000
-	TextLabel.Position = UDim2.new(-0.051282052, 0, 14, 0)
-	TextLabel.Size = UDim2.new(0, 178, 0, 78)
-	TextLabel.ZIndex = 2
-	TextLabel.Font = Enum.Font.Code
-	TextLabel.Text = "A server-switch disabled the script. Do you want to load it again?"
-	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel.TextScaled = true
-	TextLabel.TextSize = 14.000
-	TextLabel.TextWrapped = true
+SwitchLoader.Name = "SwitchLoader"
+SwitchLoader.Parent = BHSwitchLoader
+SwitchLoader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SwitchLoader.BackgroundTransparency = 1.000
+SwitchLoader.BorderColor3 = Color3.fromRGB(27, 42, 53)
+SwitchLoader.Position = UDim2.new(0, 35, 1, -300)
+SwitchLoader.Size = UDim2.new(0, 229, 0, 180)
+SwitchLoader.ImageColor3 = Color3.fromRGB(17, 17, 17)
+SwitchLoader.ScaleType = Enum.ScaleType.Slice
+SwitchLoader.SliceCenter = Rect.new(100, 100, 100, 100)
+SwitchLoader.SliceScale = 0.167
 
-	TextLabel_2.Parent = SwitchLoader
-	TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel_2.BackgroundTransparency = 1.000
-	TextLabel_2.Position = UDim2.new(0.167245269, 0, -0.00100000005, 3)
-	TextLabel_2.Size = UDim2.new(0, 152, 0, 17)
-	TextLabel_2.Font = Enum.Font.SciFi
-	TextLabel_2.Text = "BrokenHub - LOADER"
-	TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel_2.TextScaled = true
-	TextLabel_2.TextSize = 14.000
-	TextLabel_2.TextWrapped = true
+Frame.Parent = SwitchLoader
+Frame.BackgroundColor3 = Color3.fromRGB(136, 0, 0)
+Frame.Position = UDim2.new(0.142030537, 0, 0.129999995, 0)
+Frame.Size = UDim2.new(0, 156, 0, 1)
 
-	Frame_2.Name = "Frame"
-	Frame_2.Parent = SwitchLoader
-	Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Frame_2.BackgroundTransparency = 1.000
-	Frame_2.Position = UDim2.new(0.0808951706, 0, 0.188888893, 0)
-	Frame_2.Size = UDim2.new(0.836135387, 0, 0.478275925, 0)
-	Frame_2.Image = "rbxassetid://3570695787"
-	Frame_2.ImageColor3 = Color3.fromRGB(13, 13, 13)
-	Frame_2.ScaleType = Enum.ScaleType.Slice
-	Frame_2.SliceCenter = Rect.new(100, 100, 100, 100)
-	Frame_2.SliceScale = 0.120
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(-0.051282052, 0, 14, 0)
+TextLabel.Size = UDim2.new(0, 178, 0, 78)
+TextLabel.ZIndex = 2
+TextLabel.Font = Enum.Font.Code
+TextLabel.Text = "A server-switch disabled the script. Do you want to load it again?"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
 
-	YES.Name = "YES"
-	YES.Parent = SwitchLoader
-	YES.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	YES.BackgroundTransparency = 1.000
-	YES.BorderSizePixel = 0
-	YES.Position = UDim2.new(0.0782638639, 0, 0.747812569, 0)
-	YES.Size = UDim2.new(0, 82, 0, 35)
-	YES.ZIndex = 2
-	YES.Font = Enum.Font.SciFi
-	YES.Text = "YES"
-	YES.TextColor3 = Color3.fromRGB(0, 0, 0)
-	YES.TextScaled = true
-	YES.TextSize = 14.000
-	YES.TextWrapped = true
+TextLabel_2.Parent = SwitchLoader
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(0.167245269, 0, -0.00100000005, 3)
+TextLabel_2.Size = UDim2.new(0, 152, 0, 17)
+TextLabel_2.Font = Enum.Font.SciFi
+TextLabel_2.Text = "BrokenHub - LOADER"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
 
-	TextButton_Roundify_12px.Name = "TextButton_Roundify_12px"
-	TextButton_Roundify_12px.Parent = YES
-	TextButton_Roundify_12px.Active = true
-	TextButton_Roundify_12px.AnchorPoint = Vector2.new(0.5, 0.5)
-	TextButton_Roundify_12px.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextButton_Roundify_12px.BackgroundTransparency = 1.000
-	TextButton_Roundify_12px.Position = UDim2.new(0.5, 0, 0.5, 0)
-	TextButton_Roundify_12px.Selectable = true
-	TextButton_Roundify_12px.Size = UDim2.new(1, 0, 1, 0)
-	TextButton_Roundify_12px.Image = "rbxassetid://3570695787"
-	TextButton_Roundify_12px.ImageColor3 = Color3.fromRGB(136, 255, 134)
-	TextButton_Roundify_12px.ScaleType = Enum.ScaleType.Slice
-	TextButton_Roundify_12px.SliceCenter = Rect.new(100, 100, 100, 100)
-	TextButton_Roundify_12px.SliceScale = 0.120
+Frame_2.Name = "Frame"
+Frame_2.Parent = SwitchLoader
+Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_2.BackgroundTransparency = 1.000
+Frame_2.Position = UDim2.new(0.0808951706, 0, 0.188888893, 0)
+Frame_2.Size = UDim2.new(0.836135387, 0, 0.478275925, 0)
+Frame_2.Image = "rbxassetid://3570695787"
+Frame_2.ImageColor3 = Color3.fromRGB(13, 13, 13)
+Frame_2.ScaleType = Enum.ScaleType.Slice
+Frame_2.SliceCenter = Rect.new(100, 100, 100, 100)
+Frame_2.SliceScale = 0.120
 
-	NO.Name = "NO"
-	NO.Parent = SwitchLoader
-	NO.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	NO.BackgroundTransparency = 1.000
-	NO.BorderSizePixel = 0
-	NO.Position = UDim2.new(0.558613181, 0, 0.747812569, 0)
-	NO.Size = UDim2.new(0, 82, 0, 35)
-	NO.ZIndex = 2
-	NO.Font = Enum.Font.SciFi
-	NO.Text = "NO"
-	NO.TextColor3 = Color3.fromRGB(0, 0, 0)
-	NO.TextScaled = true
-	NO.TextSize = 14.000
-	NO.TextWrapped = true
+YES.Name = "YES"
+YES.Parent = SwitchLoader
+YES.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+YES.BackgroundTransparency = 1.000
+YES.BorderSizePixel = 0
+YES.Position = UDim2.new(0.0782638639, 0, 0.747812569, 0)
+YES.Size = UDim2.new(0, 82, 0, 35)
+YES.ZIndex = 2
+YES.Font = Enum.Font.SciFi
+YES.Text = "YES"
+YES.TextColor3 = Color3.fromRGB(0, 0, 0)
+YES.TextScaled = true
+YES.TextSize = 14.000
+YES.TextWrapped = true
 
-	TextButton_Roundify_12px_2.Name = "TextButton_Roundify_12px"
-	TextButton_Roundify_12px_2.Parent = NO
-	TextButton_Roundify_12px_2.Active = true
-	TextButton_Roundify_12px_2.AnchorPoint = Vector2.new(0.5, 0.5)
-	TextButton_Roundify_12px_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextButton_Roundify_12px_2.BackgroundTransparency = 1.000
-	TextButton_Roundify_12px_2.Position = UDim2.new(0.5, 0, 0.5, 0)
-	TextButton_Roundify_12px_2.Selectable = true
-	TextButton_Roundify_12px_2.Size = UDim2.new(1, 0, 1, 0)
-	TextButton_Roundify_12px_2.Image = "rbxassetid://3570695787"
-	TextButton_Roundify_12px_2.ImageColor3 = Color3.fromRGB(255, 106, 108)
-	TextButton_Roundify_12px_2.ScaleType = Enum.ScaleType.Slice
-	TextButton_Roundify_12px_2.SliceCenter = Rect.new(100, 100, 100, 100)
-	TextButton_Roundify_12px_2.SliceScale = 0.120
+TextButton_Roundify_12px.Name = "TextButton_Roundify_12px"
+TextButton_Roundify_12px.Parent = YES
+TextButton_Roundify_12px.Active = true
+TextButton_Roundify_12px.AnchorPoint = Vector2.new(0.5, 0.5)
+TextButton_Roundify_12px.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_Roundify_12px.BackgroundTransparency = 1.000
+TextButton_Roundify_12px.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextButton_Roundify_12px.Selectable = true
+TextButton_Roundify_12px.Size = UDim2.new(1, 0, 1, 0)
+TextButton_Roundify_12px.Image = "rbxassetid://3570695787"
+TextButton_Roundify_12px.ImageColor3 = Color3.fromRGB(136, 255, 134)
+TextButton_Roundify_12px.ScaleType = Enum.ScaleType.Slice
+TextButton_Roundify_12px.SliceCenter = Rect.new(100, 100, 100, 100)
+TextButton_Roundify_12px.SliceScale = 0.120
 
-	background.Name = "background"
-	background.Parent = SwitchLoader
-	background.BackgroundColor3 = Color3.fromRGB(243, 243, 255)
-	background.BorderColor3 = Color3.fromRGB(243, 243, 255)
-	background.BorderSizePixel = 0
-	background.Size = UDim2.new(1, 0, 1, 0)
-	background.ZIndex = -1
+NO.Name = "NO"
+NO.Parent = SwitchLoader
+NO.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NO.BackgroundTransparency = 1.000
+NO.BorderSizePixel = 0
+NO.Position = UDim2.new(0.558613181, 0, 0.747812569, 0)
+NO.Size = UDim2.new(0, 82, 0, 35)
+NO.ZIndex = 2
+NO.Font = Enum.Font.SciFi
+NO.Text = "NO"
+NO.TextColor3 = Color3.fromRGB(0, 0, 0)
+NO.TextScaled = true
+NO.TextSize = 14.000
+NO.TextWrapped = true
 
-	Gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(16, 16, 17)), ColorSequenceKeypoint.new(0.37, Color3.fromRGB(24, 26, 31)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(17, 23, 35))}
-	Gradient.Rotation = 270
-	Gradient.Name = "Gradient"
-	Gradient.Parent = background
+TextButton_Roundify_12px_2.Name = "TextButton_Roundify_12px"
+TextButton_Roundify_12px_2.Parent = NO
+TextButton_Roundify_12px_2.Active = true
+TextButton_Roundify_12px_2.AnchorPoint = Vector2.new(0.5, 0.5)
+TextButton_Roundify_12px_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_Roundify_12px_2.BackgroundTransparency = 1.000
+TextButton_Roundify_12px_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextButton_Roundify_12px_2.Selectable = true
+TextButton_Roundify_12px_2.Size = UDim2.new(1, 0, 1, 0)
+TextButton_Roundify_12px_2.Image = "rbxassetid://3570695787"
+TextButton_Roundify_12px_2.ImageColor3 = Color3.fromRGB(255, 106, 108)
+TextButton_Roundify_12px_2.ScaleType = Enum.ScaleType.Slice
+TextButton_Roundify_12px_2.SliceCenter = Rect.new(100, 100, 100, 100)
+TextButton_Roundify_12px_2.SliceScale = 0.120
 
-	orange.Name = "orange"
-	orange.Parent = background
-	orange.BackgroundColor3 = Color3.fromRGB(243, 243, 255)
-	orange.BorderColor3 = Color3.fromRGB(243, 243, 255)
-	orange.BorderSizePixel = 0
-	orange.Position = UDim2.new(-0.000366747379, 0, -0.00198807148, 0)
-	orange.Size = UDim2.new(1, 0, 1, 0)
-	orange.ZIndex = 61
+background.Name = "background"
+background.Parent = SwitchLoader
+background.BackgroundColor3 = Color3.fromRGB(243, 243, 255)
+background.BorderColor3 = Color3.fromRGB(243, 243, 255)
+background.BorderSizePixel = 0
+background.Size = UDim2.new(1, 0, 1, 0)
+background.ZIndex = -1
 
-	Gradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 126, 35)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
-	Gradient_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.72), NumberSequenceKeypoint.new(0.36, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
-	Gradient_2.Name = "Gradient"
-	Gradient_2.Parent = orange
+Gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(16, 16, 17)), ColorSequenceKeypoint.new(0.37, Color3.fromRGB(24, 26, 31)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(17, 23, 35))}
+Gradient.Rotation = 270
+Gradient.Name = "Gradient"
+Gradient.Parent = background
 
-	Shadow.Name = "Shadow"
-	Shadow.Parent = BHSwitchLoader
-	Shadow.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
-	Shadow.BackgroundTransparency = 0.300
-	Shadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Shadow.BorderSizePixel = 0
-	Shadow.Position = UDim2.new(-0.00791856926, 35, 0.999642134, -300)
-	Shadow.Size = UDim2.new(0, 236, 0, 187)
-	Shadow.ZIndex = -5
-	Shadow.ImageColor3 = Color3.fromRGB(17, 17, 17)
-	Shadow.ScaleType = Enum.ScaleType.Slice
-	Shadow.SliceCenter = Rect.new(100, 100, 100, 100)
-	Shadow.SliceScale = 0.167
+orange.Name = "orange"
+orange.Parent = background
+orange.BackgroundColor3 = Color3.fromRGB(243, 243, 255)
+orange.BorderColor3 = Color3.fromRGB(243, 243, 255)
+orange.BorderSizePixel = 0
+orange.Position = UDim2.new(-0.000366747379, 0, -0.00198807148, 0)
+orange.Size = UDim2.new(1, 0, 1, 0)
+orange.ZIndex = 61
 
-	-- Scripts:
+Gradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 126, 35)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
+Gradient_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.72), NumberSequenceKeypoint.new(0.36, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
+Gradient_2.Name = "Gradient"
+Gradient_2.Parent = orange
 
-	local function RVVZO_fake_script() -- YES.LocalScript 
-		local script = Instance.new('LocalScript', YES)
+-- Scripts:
 
-		script.Parent.MouseButton1Click:Connect(function()
-			if not alrclicked then
-				alrclicked = true
-				script.Parent.Parent.Visible = false
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader", true))()
-			end
-		end)
-	end
-	coroutine.wrap(RVVZO_fake_script)()
-	local function PGXHXL_fake_script() -- NO.LocalScript 
-		local script = Instance.new('LocalScript', NO)
+local function HYEZ_fake_script() -- YES.LocalScript 
+	local script = Instance.new('LocalScript', YES)
 
-		script.Parent.MouseButton1Click:Connect(function()
-			script.Parent.Parent.Parent:Destroy()
-		end)
-	end
-	coroutine.wrap(PGXHXL_fake_script)()
-	local function XUNPMSR_fake_script() -- Gradient_2.Animate 
-		local script = Instance.new('LocalScript', Gradient_2)
+	script.Parent.MouseButton1Click:Connect(function()
+		if not alrclicked then
+			alrclicked = true
+			script.Parent.Parent.Visible = false
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader", true))()
+		end
+	end)
+end
+coroutine.wrap(HYEZ_fake_script)()
+local function TTOJAWJ_fake_script() -- NO.LocalScript 
+	local script = Instance.new('LocalScript', NO)
 
-		local button = script.Parent
-		local gradient = script.Parent
-		local ts = game:GetService("TweenService")
-		local ti = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-		local offset = {Offset = Vector2.new(1, 0)}
-		local create = ts:Create(gradient, ti, offset)
-		local startingPos = Vector2.new(-1, 0)
-		local list = {} --list of random colors (we'll be generating them shortly after)
-		local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
-		local counter = 0 --count the last table index we just indexed/last gradient color reference
-		local status = "down" --[[there will be two groups of if statements (one above and one below). 
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent:Destroy()
+	end)
+end
+coroutine.wrap(TTOJAWJ_fake_script)()
+local function MUQRRFM_fake_script() -- Gradient_2.Animate 
+	local script = Instance.new('LocalScript', Gradient_2)
+
+	local button = script.Parent
+	local gradient = script.Parent
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+	local offset = {Offset = Vector2.new(1, 0)}
+	local create = ts:Create(gradient, ti, offset)
+	local startingPos = Vector2.new(-1, 0)
+	local list = {} --list of random colors (we'll be generating them shortly after)
+	local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
+	local counter = 0 --count the last table index we just indexed/last gradient color reference
+	local status = "down" --[[there will be two groups of if statements (one above and one below). 
 	It glitches out some times and runs the same group multiple times, so we need this. ]] 
-		gradient.Offset = startingPos --reset the offset of the gradient
-
-		local function rainbowColors()
-
+	gradient.Offset = startingPos --reset the offset of the gradient
+	
+	local function rainbowColors()
+	
 	    --[[HSV uses values 0-1, but we'll use until 255 and divide later to 
 	    better control the colors.]]
-
-			local sat, val = 255, 255 
-
-			for i = 1, 15 do --15 is a multiple of 255
-
-				local hue = i * 17 --255/15 = 17
-				table.insert(list, Color3.fromHSV(hue / 255, sat / 255, val / 255)) --divide by 255 to be in range of 0-1
-
-			end
-
+	
+		local sat, val = 255, 255 
+	
+		for i = 1, 15 do --15 is a multiple of 255
+	
+			local hue = i * 17 --255/15 = 17
+			table.insert(list, Color3.fromHSV(hue / 255, sat / 255, val / 255)) --divide by 255 to be in range of 0-1
+	
 		end
-
-		rainbowColors() --add to the list table
-
-		--set up the first gradient 
-		gradient.Color = s({
-
-			kpt(0, list[#list]),
-			kpt(0.5, list[#list - 1]),
-			kpt(1, list[#list - 2])
-
-		})
-
-		counter = #list --max indexed is #list, which is 10 in this instance
-		local function animate()
-
-			create:Play()
-			create.Completed:Wait() --wait for tween completion
-			gradient.Offset = startingPos 
-			gradient.Rotation = 180 --flip time!
-
+	
+	end
+	
+	rainbowColors() --add to the list table
+	
+	--set up the first gradient 
+	gradient.Color = s({
+	
+		kpt(0, list[#list]),
+		kpt(0.5, list[#list - 1]),
+		kpt(1, list[#list - 2])
+	
+	})
+	
+	counter = #list --max indexed is #list, which is 10 in this instance
+	local function animate()
+	
+		create:Play()
+		create.Completed:Wait() --wait for tween completion
+		gradient.Offset = startingPos 
+		gradient.Rotation = 180 --flip time!
+	
 	    --[[#list - 1 because we have 3 key points, 1 will be preserved from 
 	    the previous tween, while the other 2 are new. We need to make 
 	    sure that indexing something beyond #list doesn't happen as it will 
 	    throw an error. In this instance, it will be 9, 10, and instead of it looking
 	    for 11, it will go back to 1.]]
-			if counter == #list - 1 and status == "down" then
-
-				gradient.Color = s({
-
-					kpt(0, gradient.Color.Keypoints[1].Value), --preserve previous color, which we'll be able to see
-					kpt(0.5, list[#list]), --change this color behind the scenes!
-					kpt(1, list[1]) --change this color behind the scenes!
-
-				})
-
-				counter = 1 --last index is 1 i.e. list[1]
-				status = "up" --the upper section already ran, time for the lower!
-
-			elseif counter == #list and status == "down" then --if the current counter is exactly 10 (in this instance), then it will go back to 1 and 2
-
-				gradient.Color = s({
-
-					kpt(0, gradient.Color.Keypoints[1].Value),
-					kpt(0.5, list[1]),
-					kpt(1, list[2])
-
-				})
-
-				counter = 2
-				status = "up"
-
-			elseif counter <= #list - 2 and status == "down" then  --in all other cases, when couter is 1-8
-
-				gradient.Color = s({
-
-					kpt(0, gradient.Color.Keypoints[1].Value),
-					kpt(0.5, list[counter + 1]), --one color over
-					kpt(1, list[counter + 2]) --two colors over
-
-				})
-
-				counter = counter + 2
-				status = "up"
-
-			end
-
-			create:Play()
-			create.Completed:Wait()
-			gradient.Offset = startingPos
-			gradient.Rotation = 0 --flip time again!
-
-			if counter == #list - 1 and status == "up" then --same as before, really, but instead of "down", it's "up", since the upper section already ran
-
-				gradient.Color = s({
-
-					--descending order because now it's rotation 0
-					kpt(0, list[1]), --1
-					kpt(0.5, list[#list]), --10
-					kpt(1, gradient.Color.Keypoints[3].Value) --put this at #3 because we just flipped rotation, so this color will be at the opposite side
-
-				})
-
-				counter = 1
-				status = "down" --below section already ran, back to the top!
-
-			elseif counter == #list and status == "up" then
-
-				gradient.Color = s({
-
-					kpt(0, list[2]), --2
-					kpt(0.5, list[1]), --1
-					kpt(1, gradient.Color.Keypoints[3].Value) --10
-
-				})
-
-				counter = 2
-				status = "down"
-
-			elseif counter <= #list - 2 and status == "up" then --in all other cases like before
-
-				gradient.Color = s({
-
-					kpt(0, list[counter + 2]), 
-					kpt(0.5, list[counter + 1]), 
-					kpt(1, gradient.Color.Keypoints[3].Value) 
-
-				})
-
-				counter = counter + 2
-				status = "down"
-
-			end
-
-			animate() --call the function inside of itself, so that it runs indefinitely
-
+		if counter == #list - 1 and status == "down" then
+	
+			gradient.Color = s({
+	
+				kpt(0, gradient.Color.Keypoints[1].Value), --preserve previous color, which we'll be able to see
+				kpt(0.5, list[#list]), --change this color behind the scenes!
+				kpt(1, list[1]) --change this color behind the scenes!
+	
+			})
+	
+			counter = 1 --last index is 1 i.e. list[1]
+			status = "up" --the upper section already ran, time for the lower!
+	
+		elseif counter == #list and status == "down" then --if the current counter is exactly 10 (in this instance), then it will go back to 1 and 2
+	
+			gradient.Color = s({
+	
+				kpt(0, gradient.Color.Keypoints[1].Value),
+				kpt(0.5, list[1]),
+				kpt(1, list[2])
+	
+			})
+	
+			counter = 2
+			status = "up"
+	
+		elseif counter <= #list - 2 and status == "down" then  --in all other cases, when couter is 1-8
+	
+			gradient.Color = s({
+	
+				kpt(0, gradient.Color.Keypoints[1].Value),
+				kpt(0.5, list[counter + 1]), --one color over
+				kpt(1, list[counter + 2]) --two colors over
+	
+			})
+	
+			counter = counter + 2
+			status = "up"
+	
 		end
-		repeat
-			wait()
-		until script.Parent.Parent.Parent.Parent.background.BackgroundTransparency < 1
+	
+		create:Play()
+		create.Completed:Wait()
+		gradient.Offset = startingPos
+		gradient.Rotation = 0 --flip time again!
+	
+		if counter == #list - 1 and status == "up" then --same as before, really, but instead of "down", it's "up", since the upper section already ran
+	
+			gradient.Color = s({
+	
+				--descending order because now it's rotation 0
+				kpt(0, list[1]), --1
+				kpt(0.5, list[#list]), --10
+				kpt(1, gradient.Color.Keypoints[3].Value) --put this at #3 because we just flipped rotation, so this color will be at the opposite side
+	
+			})
+	
+			counter = 1
+			status = "down" --below section already ran, back to the top!
+	
+		elseif counter == #list and status == "up" then
+	
+			gradient.Color = s({
+	
+				kpt(0, list[2]), --2
+				kpt(0.5, list[1]), --1
+				kpt(1, gradient.Color.Keypoints[3].Value) --10
+	
+			})
+	
+			counter = 2
+			status = "down"
+	
+		elseif counter <= #list - 2 and status == "up" then --in all other cases like before
+	
+			gradient.Color = s({
+	
+				kpt(0, list[counter + 2]), 
+				kpt(0.5, list[counter + 1]), 
+				kpt(1, gradient.Color.Keypoints[3].Value) 
+	
+			})
+	
+			counter = counter + 2
+			status = "down"
+	
+		end
+	
+		animate() --call the function inside of itself, so that it runs indefinitely
+	
+	end
+	repeat
+		wait()
+	until script.Parent.Parent.Parent.Parent.background.BackgroundTransparency < 1
+	wait(1)
+	animate() --call the function initially 
+end
+coroutine.wrap(MUQRRFM_fake_script)()
+local function YCDB_fake_script() -- BHSwitchLoader.SynProtect 
+	local script = Instance.new('LocalScript', BHSwitchLoader)
+
+	if syn then
+		script.Parent.Parent = game:GetService("CoreGui")
 		wait(1)
-		animate() --call the function initially 
+		syn.protect_gui(script.Parent)
+	else
+		warn("[BROKENHUB-SWITCHLOADER] Protect-gui function not found!")
 	end
-	coroutine.wrap(XUNPMSR_fake_script)()
-	local function NVTAAS_fake_script() -- BHSwitchLoader.SynProtect 
-		local script = Instance.new('LocalScript', BHSwitchLoader)
+	
+end
+coroutine.wrap(YCDB_fake_script)()
 
-		if syn then
-			script.Parent.Parent = game:GetService("CoreGui")
-			wait(1)
-			syn.protect_gui(script.Parent)
-		else
-			warn("[BROKENHUB-SWITCHLOADER] Protect-gui function not found!")
-		end
-
-	end
-	coroutine.wrap(NVTAAS_fake_script)()
 end
