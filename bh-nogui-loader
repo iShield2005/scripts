@@ -72,7 +72,13 @@ else
     elseif loaderResponseFormatted == "" then
     	game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
     elseif loaderResponseFormatted == "Invalid-Script-Name" then
-        game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the client side.\n This game is not supported by our hub!")
+        if game:GetService("CoreGui"):FindFirstChild("BHLoader") then
+    		local DoNotSupportedAnimation = Instance.new("TextBox")
+		DoNotSupportedAnimation.Visible = false
+		DoNotSupportedAnimation.Name = "DoNotSupportedAnimation"
+		DoNotSupportedAnimation.Text = "This game is not supported!"
+		DoNotSupportedAnimation.Parent = game:GetService("CoreGui"):FindFirstChild("BHLoader")
+    	end
     elseif loaderResponseFormatted == "Unexistent-Certificate-Codes" then
     	game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error message has been sent from the server:\n 'Unexistent certificate codes!'")
     elseif loaderResponseFormatted == "Unsupported-Exploit" then
