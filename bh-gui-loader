@@ -4,7 +4,6 @@
 -- Instances:
 
 local BHLoader = Instance.new("ScreenGui")
-BHLoader.IgnoreGuiInset = true
 local Frame = Instance.new("ImageLabel")
 local ImageLabel = Instance.new("ImageLabel")
 local Broken = Instance.new("ImageLabel")
@@ -140,7 +139,7 @@ Loaded.ScaleType = Enum.ScaleType.Fit
 
 -- Scripts:
 
-local function RJVOSLV_fake_script() -- BHLoader.LocalScript 
+local function HJAXKKO_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -260,8 +259,8 @@ local function RJVOSLV_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(RJVOSLV_fake_script)()
-local function PVAEL_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(HJAXKKO_fake_script)()
+local function TXBFH_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -415,18 +414,25 @@ local function PVAEL_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(PVAEL_fake_script)()
-local function MXWZQE_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(TXBFH_fake_script)()
+local function GKARC_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(MXWZQE_fake_script)()
-local function FAVPMRK_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(GKARC_fake_script)()
+local function BULA_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
+	-- Pre-Variables
+	local loaded = script.Parent.Loaded
+	local ogLoadedSize = loaded.Size
+	local allBackground = script.Parent.Parent.Parent.LBackground
+	loaded.Size = UDim2.new(0,0,0)
+	loaded.Visible = false
+	loaded.ImageTransparency = 1
 	-- Waiter
 	repeat
 		wait()
@@ -436,12 +442,6 @@ local function FAVPMRK_fake_script() -- LoaderAnim.LoadedAnim
 		local foundTextbox = script.Parent.Parent:FindFirstChild("DoLoadedAnimation")
 		local textToShow = foundTextbox.Text
 		local rotatingLoader = script.Parent.RotatingLoader
-		local loaded = script.Parent.Loaded
-		local ogLoadedSize = loaded.Size
-		local allBackground = script.Parent.Parent.Parent.LBackground
-		loaded.Size = UDim2.new(0,0,0)
-		loaded.Visible = false
-		loaded.ImageTransparency = 1
 		-- Functions
 		function tweenpossync(uiobject, speed, finaludim)
 			uiobject:TweenPosition(finaludim, 'Out', 'Quint', speed)
@@ -474,4 +474,4 @@ local function FAVPMRK_fake_script() -- LoaderAnim.LoadedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(FAVPMRK_fake_script)()
+coroutine.wrap(BULA_fake_script)()
