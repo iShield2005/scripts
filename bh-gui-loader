@@ -168,7 +168,7 @@ TextToShow.TextWrapped = true
 
 -- Scripts:
 
-local function GNZPZ_fake_script() -- BHLoader.LocalScript 
+local function YMXC_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -288,8 +288,8 @@ local function GNZPZ_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(GNZPZ_fake_script)()
-local function GEMHJYZ_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(YMXC_fake_script)()
+local function TFXYBMF_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -443,16 +443,16 @@ local function GEMHJYZ_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(GEMHJYZ_fake_script)()
-local function KWBDDY_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(TFXYBMF_fake_script)()
+local function BLFG_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(KWBDDY_fake_script)()
-local function UNNRDSY_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(BLFG_fake_script)()
+local function UMLI_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -490,20 +490,20 @@ local function UNNRDSY_fake_script() -- LoaderAnim.LoadedAnim
 			wait()
 			rotatingLoader.ImageTransparency = rotatingLoader.ImageTransparency + .1
 		end
-		tweensizeasync(loaded, 1, ogLoadedSize)
+		tweensizeasync(loaded, 1, UDim2.new(ogLoadedSize))
 		for i=0,10 do
 			wait()
 			loaded.ImageTransparency = loaded.ImageTransparency - .1
 		end
-		wait(1)
+		wait(2)
 		tweensizesync(allBackground,1,UDim2.new(0,0,0))
 		script.Parent.Parent.Parent:Destroy()
 	else
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(UNNRDSY_fake_script)()
-local function FCGQQR_fake_script() -- LoaderAnim.NotSupportedAnim 
+coroutine.wrap(UMLI_fake_script)()
+local function LCGHABJ_fake_script() -- LoaderAnim.NotSupportedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -543,7 +543,7 @@ local function FCGQQR_fake_script() -- LoaderAnim.NotSupportedAnim
 			wait()
 			rotatingLoader.ImageTransparency = rotatingLoader.ImageTransparency + .1
 		end
-		tweensizeasync(errorIcon, 1, ogErrorIconSize)
+		tweensizeasync(errorIcon, 1, UDim2.new(ogErrorIconSize))
 		for i=0,10 do
 			wait()
 			errorIcon.ImageTransparency = errorIcon.ImageTransparency - .1
@@ -552,11 +552,11 @@ local function FCGQQR_fake_script() -- LoaderAnim.NotSupportedAnim
 			wait()
 			textToShowTextLabel.TextTransparency = textToShowTextLabel.TextTransparency - .1
 		end
-		wait(1)
+		wait(5)
 		tweensizesync(allBackground,1,UDim2.new(0,0,0))
 		script.Parent.Parent.Parent:Destroy()
 	else
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(FCGQQR_fake_script)()
+coroutine.wrap(LCGHABJ_fake_script)()
