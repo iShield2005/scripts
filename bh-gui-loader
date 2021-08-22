@@ -33,7 +33,6 @@ Frame.BackgroundTransparency = 1.000
 Frame.ClipsDescendants = true
 Frame.Position = UDim2.new(0.499306232, 0, 0.499005973, 0)
 Frame.Size = UDim2.new(0, 307, 0, 165)
-Frame.Visible = false
 Frame.ZIndex = 100
 Frame.Image = "rbxassetid://3570695787"
 Frame.ImageColor3 = Color3.fromRGB(15, 15, 15)
@@ -67,7 +66,6 @@ background.BackgroundColor3 = Color3.fromRGB(243, 243, 255)
 background.BorderColor3 = Color3.fromRGB(243, 243, 255)
 background.BorderSizePixel = 0
 background.Size = UDim2.new(1, 0, 1, 0)
-background.Visible = false
 background.ZIndex = 60
 
 Gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(16, 16, 17)), ColorSequenceKeypoint.new(0.37, Color3.fromRGB(24, 26, 31)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(17, 23, 35))}
@@ -97,6 +95,7 @@ LBackground.BackgroundTransparency = 1.000
 LBackground.ClipsDescendants = true
 LBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
 LBackground.Size = UDim2.new(0, 175, 0, 162)
+LBackground.Visible = false
 LBackground.ZIndex = 49
 LBackground.Image = "rbxassetid://3570695787"
 LBackground.ImageColor3 = Color3.fromRGB(24, 24, 24)
@@ -169,7 +168,7 @@ TextToShow.TextWrapped = true
 
 -- Scripts:
 
-local function JILWFF_fake_script() -- BHLoader.LocalScript 
+local function URUOEU_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -289,8 +288,8 @@ local function JILWFF_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(JILWFF_fake_script)()
-local function YLES_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(URUOEU_fake_script)()
+local function ICFHCGY_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -444,16 +443,16 @@ local function YLES_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(YLES_fake_script)()
-local function PXHYU_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(ICFHCGY_fake_script)()
+local function SXWSWDY_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(PXHYU_fake_script)()
-local function SVMJBNW_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(SXWSWDY_fake_script)()
+local function XKAHM_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -503,8 +502,8 @@ local function SVMJBNW_fake_script() -- LoaderAnim.LoadedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(SVMJBNW_fake_script)()
-local function KYSB_fake_script() -- LoaderAnim.NotSupportedAnim 
+coroutine.wrap(XKAHM_fake_script)()
+local function TLXIY_fake_script() -- LoaderAnim.NotSupportedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -560,4 +559,4 @@ local function KYSB_fake_script() -- LoaderAnim.NotSupportedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(KYSB_fake_script)()
+coroutine.wrap(TLXIY_fake_script)()
