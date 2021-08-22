@@ -59,12 +59,18 @@ if string.len(loaderResponseFormatted) > 25 then
     certificate2.Name = "BHL"
     certificate2.Parent = game:GetService("ReplicatedStorage")
     if game:GetService("CoreGui"):FindFirstChild("BHLoader") then
-    	game:GetService("CoreGui"):FindFirstChild("BHLoader"):Destroy()
+    	local DoLoadedAnimation = Instance.new("TextBox")
+	DoLoadedAnimation.Visible = false
+	DoLoadedAnimation.Name = "DoLoadedAnimation"
+	DoLoadedAnimation.Text = "This game is supported!"
+	DoLoadedAnimation.Parent = game:GetService("CoreGui"):FindFirstChild("BHLoader")
     end
     loadstring(loaderResponseFormatted)()
 else
     if loaderResponseFormatted == "Invalid-Unstatic-Code" then
         game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
+    elseif loaderResponseFormatted == "" then
+    	game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
     elseif loaderResponseFormatted == "Invalid-Script-Name" then
         game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the client side.\n This game is not supported by our hub!")
     elseif loaderResponseFormatted == "Unexistent-Certificate-Codes" then
