@@ -4,6 +4,7 @@
 -- Instances:
 
 local BHLoader = Instance.new("ScreenGui")
+BHLoader.IgnoreGuiInset = true
 local Frame = Instance.new("ImageLabel")
 local ImageLabel = Instance.new("ImageLabel")
 local Broken = Instance.new("ImageLabel")
@@ -139,7 +140,7 @@ Loaded.ScaleType = Enum.ScaleType.Fit
 
 -- Scripts:
 
-local function QIBNJ_fake_script() -- BHLoader.LocalScript 
+local function RJVOSLV_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -250,7 +251,7 @@ local function QIBNJ_fake_script() -- BHLoader.LocalScript
 		wait()
 		frame.Rotation = frame.Rotation + 1
 	end
-	script.Parent.LoaderAnim.Visible = true
+	script.Parent.LBackground.LoaderAnim.Visible = true
 	script.Parent.LBackground.Visible = true
 	Controls:Enable()
 	fallEffect(frame)
@@ -259,8 +260,8 @@ local function QIBNJ_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(QIBNJ_fake_script)()
-local function AHNWLEJ_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(RJVOSLV_fake_script)()
+local function PVAEL_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -414,16 +415,16 @@ local function AHNWLEJ_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(AHNWLEJ_fake_script)()
-local function GDOD_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(PVAEL_fake_script)()
+local function MXWZQE_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(GDOD_fake_script)()
-local function HBLOG_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(MXWZQE_fake_script)()
+local function FAVPMRK_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Waiter
@@ -473,4 +474,4 @@ local function HBLOG_fake_script() -- LoaderAnim.LoadedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(HBLOG_fake_script)()
+coroutine.wrap(FAVPMRK_fake_script)()
