@@ -61,7 +61,7 @@ if string.len(loaderResponseFormatted) > 25 then
     if game:GetService("CoreGui"):FindFirstChild("BHLoader") then
     	local DoLoadedAnimation = Instance.new("Part")
 	DoLoadedAnimation.Name = "BHDoLoadedAnimation"
-	DoLoadedAnimation.Parent = game.Workspace)
+	DoLoadedAnimation.Parent = game.Workspace
     end
     loadstring(loaderResponseFormatted)()
 else
