@@ -201,7 +201,7 @@ local function VKIXQYI_fake_script() -- BHLoader.LocalScript
 	frame.ImageTransparency = 1
 	logo.ImageTransparency = 1
 	wait(1) -- First animation start
-	game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+	game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 	local PlayerModule = require(game.Players.LocalPlayer.PlayerScripts:WaitForChild("PlayerModule"))
 	local Controls = PlayerModule:GetControls()
 	Controls:Disable()
@@ -279,6 +279,7 @@ local function VKIXQYI_fake_script() -- BHLoader.LocalScript
 	script.Parent.LBackground.LoaderAnim.Visible = true
 	script.Parent.LBackground.Visible = true
 	Controls:Enable()
+	game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
 	fallEffect(frame)
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader'))()
 	
