@@ -169,7 +169,7 @@ TextToShow.TextWrapped = true
 
 -- Scripts:
 
-local function NMDLRZ_fake_script() -- BHLoader.LocalScript 
+local function JILWFF_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -289,8 +289,8 @@ local function NMDLRZ_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(NMDLRZ_fake_script)()
-local function VPOZB_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(JILWFF_fake_script)()
+local function YLES_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -444,16 +444,16 @@ local function VPOZB_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(VPOZB_fake_script)()
-local function JWDDCMZ_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(YLES_fake_script)()
+local function PXHYU_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(JWDDCMZ_fake_script)()
-local function DOSJK_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(PXHYU_fake_script)()
+local function SVMJBNW_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -466,11 +466,10 @@ local function DOSJK_fake_script() -- LoaderAnim.LoadedAnim
 	-- Waiter
 	repeat
 		wait()
-	until script.Parent.Parent.Parent:FindFirstChild("DoLoadedAnimation")
-	if script.Parent.Parent.Parent:FindFirstChild("DoLoadedAnimation") then
+	until game.Workspace:FindFirstChild("BHDoLoadedAnimation")
+	print("Doing loaded.")
+	if script.Parent.Parent.Parent:FindFirstChild("BHDoLoadedAnimation") then
 		-- Variables
-		local foundTextbox = script.Parent.Parent.Parent:FindFirstChild("DoLoadedAnimation")
-		local textToShow = foundTextbox.Text
 		local rotatingLoader = script.Parent.RotatingLoader
 		-- Functions
 		function tweenpossync(uiobject, speed, finaludim)
@@ -504,8 +503,8 @@ local function DOSJK_fake_script() -- LoaderAnim.LoadedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(DOSJK_fake_script)()
-local function PNGUV_fake_script() -- LoaderAnim.NotSupportedAnim 
+coroutine.wrap(SVMJBNW_fake_script)()
+local function KYSB_fake_script() -- LoaderAnim.NotSupportedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -520,11 +519,10 @@ local function PNGUV_fake_script() -- LoaderAnim.NotSupportedAnim
 	-- Waiter
 	repeat
 		wait()
-	until script.Parent.Parent.Parent:FindFirstChild("DoNotSupportedAnimation")
-	if script.Parent.Parent.Parent:FindFirstChild("DoNotSupportedAnimation") then
+	until game.Workspace:FindFirstChild("BHDoNotSupportedAnimation")
+	print("Not supported.")
+	if game.Workspace:FindFirstChild("BHDoNotSupportedAnimation") then
 		-- Variables
-		local foundTextbox = script.Parent.Parent.Parent:FindFirstChild("DoNotSupportedAnimation")
-		local textToShow = foundTextbox.Text
 		local rotatingLoader = script.Parent.RotatingLoader
 		-- Functions
 		function tweenpossync(uiobject, speed, finaludim)
@@ -562,4 +560,4 @@ local function PNGUV_fake_script() -- LoaderAnim.NotSupportedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(PNGUV_fake_script)()
+coroutine.wrap(KYSB_fake_script)()
