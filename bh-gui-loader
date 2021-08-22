@@ -4,6 +4,7 @@
 -- Instances:
 
 local BHLoader = Instance.new("ScreenGui")
+BHLoader.IgnoreGuiInset = true
 local Frame = Instance.new("ImageLabel")
 local ImageLabel = Instance.new("ImageLabel")
 local Broken = Instance.new("ImageLabel")
