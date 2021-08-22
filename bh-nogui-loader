@@ -63,7 +63,7 @@ if string.len(loaderResponseFormatted) > 25 then
 	DoLoadedAnimation.Name = "BHDoLoadedAnimation"
 	DoLoadedAnimation.Parent = game.Workspace
     end
-    wait(2)
+    wait(5)
     loadstring(loaderResponseFormatted)()
 else
     if loaderResponseFormatted == "Invalid-Unstatic-Code" then
