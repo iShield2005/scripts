@@ -167,7 +167,7 @@ TextToShow.TextWrapped = true
 
 -- Scripts:
 
-local function QXAUC_fake_script() -- BHLoader.LocalScript 
+local function VKIXQYI_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -287,8 +287,8 @@ local function QXAUC_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(QXAUC_fake_script)()
-local function YVAWKRZ_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(VKIXQYI_fake_script)()
+local function DENJ_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -442,16 +442,16 @@ local function YVAWKRZ_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(YVAWKRZ_fake_script)()
-local function FAJP_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(DENJ_fake_script)()
+local function LNUV_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(FAJP_fake_script)()
-local function KZWIP_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(LNUV_fake_script)()
+local function YHQKGOR_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -466,6 +466,7 @@ local function KZWIP_fake_script() -- LoaderAnim.LoadedAnim
 	until game.Workspace:FindFirstChild("BHDoLoadedAnimation")
 	print("Doing loaded.")
 	if game.Workspace:FindFirstChild("BHDoLoadedAnimation") then
+		game.Workspace:FindFirstChild("BHDoLoadedAnimation"):Destroy()
 		-- Variables
 		local rotatingLoader = script.Parent.RotatingLoader
 		-- Functions
@@ -501,8 +502,8 @@ local function KZWIP_fake_script() -- LoaderAnim.LoadedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(KZWIP_fake_script)()
-local function PITHZ_fake_script() -- LoaderAnim.NotSupportedAnim 
+coroutine.wrap(YHQKGOR_fake_script)()
+local function JCNTI_fake_script() -- LoaderAnim.NotSupportedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variablesss
@@ -520,6 +521,7 @@ local function PITHZ_fake_script() -- LoaderAnim.NotSupportedAnim
 	until game.Workspace:FindFirstChild("BHDoNotSupportedAnimation")
 	print("Not supported.")
 	if game.Workspace:FindFirstChild("BHDoNotSupportedAnimation") then
+		game.Workspace:FindFirstChild("BHDoNotSupportedAnimation"):Destroy()
 		-- Variables
 		local rotatingLoader = script.Parent.RotatingLoader
 		-- Functions
@@ -559,4 +561,4 @@ local function PITHZ_fake_script() -- LoaderAnim.NotSupportedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(PITHZ_fake_script)()
+coroutine.wrap(JCNTI_fake_script)()
