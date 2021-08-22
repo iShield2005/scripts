@@ -141,7 +141,7 @@ Loaded.ScaleType = Enum.ScaleType.Fit
 
 -- Scripts:
 
-local function MTOCO_fake_script() -- BHLoader.LocalScript 
+local function QQODH_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -261,8 +261,8 @@ local function MTOCO_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(MTOCO_fake_script)()
-local function ALHPMWA_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(QQODH_fake_script)()
+local function LEHCHA_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -416,18 +416,22 @@ local function ALHPMWA_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(ALHPMWA_fake_script)()
-local function QIRDLU_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(LEHCHA_fake_script)()
+local function IPKEEOV_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(QIRDLU_fake_script)()
-local function WQSYSQZ_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(IPKEEOV_fake_script)()
+local function XRVB_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
+	-- Waiter
+	repeat
+		wait()
+	until script.Parent.Parent:FindFirstChild("DoLoadedAnimation")
 	-- Variables
 	local foundTextbox = script.Parent.Parent:FindFirstChild("DoLoadedAnimation")
 	local textToShow = foundTextbox.Text
@@ -453,10 +457,6 @@ local function WQSYSQZ_fake_script() -- LoaderAnim.LoadedAnim
 	function tweensizeasync(uiobject, speed, finaludim)
 		uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
 	end
-	-- Waiter
-	repeat
-		wait()
-	until script.Parent.Parent:FindFirstChild("DoLoadedAnimation")
 	-- Animation
 	for i=0,10 do
 		wait()
@@ -471,4 +471,4 @@ local function WQSYSQZ_fake_script() -- LoaderAnim.LoadedAnim
 	tweensizesync(allBackground,1,UDim2.new(0,0,0))
 	script.Parent.Parent.Parent:Destroy()
 end
-coroutine.wrap(WQSYSQZ_fake_script)()
+coroutine.wrap(XRVB_fake_script)()
