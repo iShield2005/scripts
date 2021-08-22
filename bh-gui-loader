@@ -168,7 +168,7 @@ TextToShow.TextWrapped = true
 
 -- Scripts:
 
-local function URUOEU_fake_script() -- BHLoader.LocalScript 
+local function GNZPZ_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -288,8 +288,8 @@ local function URUOEU_fake_script() -- BHLoader.LocalScript
 	
 	
 end
-coroutine.wrap(URUOEU_fake_script)()
-local function ICFHCGY_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(GNZPZ_fake_script)()
+local function GEMHJYZ_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -443,16 +443,16 @@ local function ICFHCGY_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(ICFHCGY_fake_script)()
-local function SXWSWDY_fake_script() -- RotatingLoader.LocalScript 
+coroutine.wrap(GEMHJYZ_fake_script)()
+local function KWBDDY_fake_script() -- RotatingLoader.LocalScript 
 	local script = Instance.new('LocalScript', RotatingLoader)
 
 	while wait() do
 		script.Parent.Rotation = script.Parent.Rotation + 5
 	end
 end
-coroutine.wrap(SXWSWDY_fake_script)()
-local function XKAHM_fake_script() -- LoaderAnim.LoadedAnim 
+coroutine.wrap(KWBDDY_fake_script)()
+local function UNNRDSY_fake_script() -- LoaderAnim.LoadedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -467,7 +467,7 @@ local function XKAHM_fake_script() -- LoaderAnim.LoadedAnim
 		wait()
 	until game.Workspace:FindFirstChild("BHDoLoadedAnimation")
 	print("Doing loaded.")
-	if script.Parent.Parent.Parent:FindFirstChild("BHDoLoadedAnimation") then
+	if game.Workspace:FindFirstChild("BHDoLoadedAnimation") then
 		-- Variables
 		local rotatingLoader = script.Parent.RotatingLoader
 		-- Functions
@@ -502,8 +502,8 @@ local function XKAHM_fake_script() -- LoaderAnim.LoadedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(XKAHM_fake_script)()
-local function TLXIY_fake_script() -- LoaderAnim.NotSupportedAnim 
+coroutine.wrap(UNNRDSY_fake_script)()
+local function FCGQQR_fake_script() -- LoaderAnim.NotSupportedAnim 
 	local script = Instance.new('LocalScript', LoaderAnim)
 
 	-- Pre-Variables
@@ -559,4 +559,4 @@ local function TLXIY_fake_script() -- LoaderAnim.NotSupportedAnim
 		game.Players.LocalPlayer:Kick("Unknown error!")
 	end
 end
-coroutine.wrap(TLXIY_fake_script)()
+coroutine.wrap(FCGQQR_fake_script)()
