@@ -5,8 +5,6 @@
 
 local BHLoader = Instance.new("ScreenGui")
 BHLoader.IgnoreGuiInset = true
-local LoaderAnim = Instance.new("ImageLabel")
-local RotatingLoader = Instance.new("ImageLabel")
 local Frame = Instance.new("ImageLabel")
 local ImageLabel = Instance.new("ImageLabel")
 local Broken = Instance.new("ImageLabel")
@@ -15,39 +13,15 @@ local Gradient = Instance.new("UIGradient")
 local orange = Instance.new("Frame")
 local Gradient_2 = Instance.new("UIGradient")
 local LBackground = Instance.new("ImageLabel")
+local LoaderAnim = Instance.new("ImageLabel")
+local RotatingLoader = Instance.new("ImageLabel")
+local Loaded = Instance.new("ImageLabel")
 
 --Properties:
 
 BHLoader.Name = "BHLoader"
 BHLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 BHLoader.ResetOnSpawn = false
-
-LoaderAnim.Name = "LoaderAnim"
-LoaderAnim.Parent = BHLoader
-LoaderAnim.AnchorPoint = Vector2.new(0.5, 0.5)
-LoaderAnim.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LoaderAnim.BackgroundTransparency = 1.000
-LoaderAnim.ClipsDescendants = true
-LoaderAnim.Position = UDim2.new(0.5, 0, 0.5, 0)
-LoaderAnim.Size = UDim2.new(0, 161, 0, 150)
-LoaderAnim.Visible = false
-LoaderAnim.ZIndex = 50
-LoaderAnim.Image = "rbxassetid://3570695787"
-LoaderAnim.ImageColor3 = Color3.fromRGB(33, 33, 33)
-LoaderAnim.ScaleType = Enum.ScaleType.Slice
-LoaderAnim.SliceCenter = Rect.new(100, 100, 100, 100)
-LoaderAnim.SliceScale = 0.120
-
-RotatingLoader.Name = "RotatingLoader"
-RotatingLoader.Parent = LoaderAnim
-RotatingLoader.AnchorPoint = Vector2.new(0.5, 0.5)
-RotatingLoader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-RotatingLoader.BackgroundTransparency = 1.000
-RotatingLoader.Position = UDim2.new(0.5, 0, 0.5, 0)
-RotatingLoader.Size = UDim2.new(0, 110, 0, 113)
-RotatingLoader.ZIndex = 51
-RotatingLoader.Image = "rbxassetid://2869102474"
-RotatingLoader.ScaleType = Enum.ScaleType.Fit
 
 Frame.Name = "Frame"
 Frame.Parent = BHLoader
@@ -57,6 +31,7 @@ Frame.BackgroundTransparency = 1.000
 Frame.ClipsDescendants = true
 Frame.Position = UDim2.new(0.499306232, 0, 0.499005973, 0)
 Frame.Size = UDim2.new(0, 307, 0, 165)
+Frame.Visible = false
 Frame.ZIndex = 100
 Frame.Image = "rbxassetid://3570695787"
 Frame.ImageColor3 = Color3.fromRGB(15, 15, 15)
@@ -90,6 +65,7 @@ background.BackgroundColor3 = Color3.fromRGB(243, 243, 255)
 background.BorderColor3 = Color3.fromRGB(243, 243, 255)
 background.BorderSizePixel = 0
 background.Size = UDim2.new(1, 0, 1, 0)
+background.Visible = false
 background.ZIndex = 60
 
 Gradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(16, 16, 17)), ColorSequenceKeypoint.new(0.37, Color3.fromRGB(24, 26, 31)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(17, 23, 35))}
@@ -119,7 +95,6 @@ LBackground.BackgroundTransparency = 1.000
 LBackground.ClipsDescendants = true
 LBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
 LBackground.Size = UDim2.new(0, 175, 0, 162)
-LBackground.Visible = false
 LBackground.ZIndex = 49
 LBackground.Image = "rbxassetid://3570695787"
 LBackground.ImageColor3 = Color3.fromRGB(24, 24, 24)
@@ -127,9 +102,46 @@ LBackground.ScaleType = Enum.ScaleType.Slice
 LBackground.SliceCenter = Rect.new(100, 100, 100, 100)
 LBackground.SliceScale = 0.120
 
+LoaderAnim.Name = "LoaderAnim"
+LoaderAnim.Parent = LBackground
+LoaderAnim.AnchorPoint = Vector2.new(0.5, 0.5)
+LoaderAnim.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LoaderAnim.BackgroundTransparency = 1.000
+LoaderAnim.ClipsDescendants = true
+LoaderAnim.Position = UDim2.new(0.5, 0, 0.5, 0)
+LoaderAnim.Size = UDim2.new(0, 161, 0, 150)
+LoaderAnim.ZIndex = 50
+LoaderAnim.Image = "rbxassetid://3570695787"
+LoaderAnim.ImageColor3 = Color3.fromRGB(33, 33, 33)
+LoaderAnim.ScaleType = Enum.ScaleType.Slice
+LoaderAnim.SliceCenter = Rect.new(100, 100, 100, 100)
+LoaderAnim.SliceScale = 0.120
+
+RotatingLoader.Name = "RotatingLoader"
+RotatingLoader.Parent = LoaderAnim
+RotatingLoader.AnchorPoint = Vector2.new(0.5, 0.5)
+RotatingLoader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RotatingLoader.BackgroundTransparency = 1.000
+RotatingLoader.Position = UDim2.new(0.5, 0, 0.5, 0)
+RotatingLoader.Size = UDim2.new(0, 110, 0, 113)
+RotatingLoader.ZIndex = 51
+RotatingLoader.Image = "rbxassetid://2869102474"
+RotatingLoader.ScaleType = Enum.ScaleType.Fit
+
+Loaded.Name = "Loaded"
+Loaded.Parent = LoaderAnim
+Loaded.AnchorPoint = Vector2.new(0.5, 0.5)
+Loaded.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Loaded.BackgroundTransparency = 1.000
+Loaded.Position = UDim2.new(0.5, 0, 0.5, 0)
+Loaded.Size = UDim2.new(0, 110, 0, 113)
+Loaded.ZIndex = 51
+Loaded.Image = "rbxassetid://1682537696"
+Loaded.ScaleType = Enum.ScaleType.Fit
+
 -- Scripts:
 
-local function RZBO_fake_script() -- BHLoader.LocalScript 
+local function MTOCO_fake_script() -- BHLoader.LocalScript 
 	local script = Instance.new('LocalScript', BHLoader)
 
 	script.Parent.Parent = game:GetService("CoreGui")
@@ -165,7 +177,7 @@ local function RZBO_fake_script() -- BHLoader.LocalScript
 	frame.ImageTransparency = 1
 	logo.ImageTransparency = 1
 	wait(1) -- First animation start
-	game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
+	game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
 	local PlayerModule = require(game.Players.LocalPlayer.PlayerScripts:WaitForChild("PlayerModule"))
 	local Controls = PlayerModule:GetControls()
 	Controls:Disable()
@@ -244,22 +256,13 @@ local function RZBO_fake_script() -- BHLoader.LocalScript
 	script.Parent.LBackground.Visible = true
 	Controls:Enable()
 	fallEffect(frame)
-	game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/iShield2005/scripts/master/bh-nogui-loader'))()
 	
 	
 	
 end
-coroutine.wrap(RZBO_fake_script)()
-local function CELBT_fake_script() -- RotatingLoader.LocalScript 
-	local script = Instance.new('LocalScript', RotatingLoader)
-
-	while wait() do
-		script.Parent.Rotation = script.Parent.Rotation + 5
-	end
-end
-coroutine.wrap(CELBT_fake_script)()
-local function CQRPRNS_fake_script() -- Gradient_2.Animate 
+coroutine.wrap(MTOCO_fake_script)()
+local function ALHPMWA_fake_script() -- Gradient_2.Animate 
 	local script = Instance.new('LocalScript', Gradient_2)
 
 	local button = script.Parent
@@ -413,4 +416,59 @@ local function CQRPRNS_fake_script() -- Gradient_2.Animate
 	wait(1)
 	animate() --call the function initially 
 end
-coroutine.wrap(CQRPRNS_fake_script)()
+coroutine.wrap(ALHPMWA_fake_script)()
+local function QIRDLU_fake_script() -- RotatingLoader.LocalScript 
+	local script = Instance.new('LocalScript', RotatingLoader)
+
+	while wait() do
+		script.Parent.Rotation = script.Parent.Rotation + 5
+	end
+end
+coroutine.wrap(QIRDLU_fake_script)()
+local function WQSYSQZ_fake_script() -- LoaderAnim.LoadedAnim 
+	local script = Instance.new('LocalScript', LoaderAnim)
+
+	-- Variables
+	local foundTextbox = script.Parent.Parent:FindFirstChild("DoLoadedAnimation")
+	local textToShow = foundTextbox.Text
+	local rotatingLoader = script.Parent.RotatingLoader
+	local loaded = script.Parent.Loaded
+	local ogLoadedSize = loaded.Size
+	local allBackground = script.Parent.Parent.Parent.LBackground
+	loaded.Size = UDim2.new(0,0,0)
+	loaded.Visible = false
+	loaded.ImageTransparency = 1
+	-- Functions
+	function tweenpossync(uiobject, speed, finaludim)
+		uiobject:TweenPosition(finaludim, 'Out', 'Quint', speed)
+		wait(speed + 0.1)
+	end
+	function tweenposasync(uiobject, speed, finaludim)
+		uiobject:TweenPosition(finaludim, 'Out', 'Quint', speed)
+	end
+	function tweensizesync(uiobject, speed, finaludim)
+		uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
+		wait(speed + 0.1)
+	end
+	function tweensizeasync(uiobject, speed, finaludim)
+		uiobject:TweenSize(finaludim, 'Out', 'Quint', speed)
+	end
+	-- Waiter
+	repeat
+		wait()
+	until script.Parent.Parent:FindFirstChild("DoLoadedAnimation")
+	-- Animation
+	for i=0,10 do
+		wait()
+		rotatingLoader.ImageTransparency = rotatingLoader.ImageTransparency + .1
+	end
+	tweensizeasync(loaded, 1, ogLoadedSize)
+	for i=0,10 do
+		wait()
+		loaded.ImageTransparency = loaded.ImageTransparency - .1
+	end
+	wait(1)
+	tweensizesync(allBackground,1,UDim2.new(0,0,0))
+	script.Parent.Parent.Parent:Destroy()
+end
+coroutine.wrap(WQSYSQZ_fake_script)()
