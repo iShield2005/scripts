@@ -59,11 +59,9 @@ if string.len(loaderResponseFormatted) > 25 then
     certificate2.Name = "BHL"
     certificate2.Parent = game:GetService("ReplicatedStorage")
     if game:GetService("CoreGui"):FindFirstChild("BHLoader") then
-    	local DoLoadedAnimation = Instance.new("TextBox")
-	DoLoadedAnimation.Visible = false
-	DoLoadedAnimation.Name = "DoLoadedAnimation"
-	DoLoadedAnimation.Text = "This game is supported!"
-	DoLoadedAnimation.Parent = game:GetService("CoreGui"):FindFirstChild("BHLoader")
+    	local DoLoadedAnimation = Instance.new("Part")
+	DoLoadedAnimation.Name = "BHDoLoadedAnimation"
+	DoLoadedAnimation.Parent = game.Workspace)
     end
     loadstring(loaderResponseFormatted)()
 else
@@ -73,11 +71,9 @@ else
     	game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
     elseif loaderResponseFormatted == "Invalid-Script-Name" then
         if game:GetService("CoreGui"):FindFirstChild("BHLoader") then
-    		local DoNotSupportedAnimation = Instance.new("TextBox")
-		DoNotSupportedAnimation.Visible = false
-		DoNotSupportedAnimation.Name = "DoNotSupportedAnimation"
-		DoNotSupportedAnimation.Text = "This game is not supported!"
-		DoNotSupportedAnimation.Parent = game:GetService("CoreGui"):FindFirstChild("BHLoader")
+    		local DoNotSupportedAnimation = Instance.new("Part")
+		DoNotSupportedAnimation.Name = "BHDoNotSupportedAnimation"
+		DoNotSupportedAnimation.Parent = game.Workspace
     	end
     elseif loaderResponseFormatted == "Unexistent-Certificate-Codes" then
     	game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error message has been sent from the server:\n 'Unexistent certificate codes!'")
