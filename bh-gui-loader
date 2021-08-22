@@ -1,8 +1,5 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
+if BROKENHUBLOADED then error("Broken-Hub is already loaded.") end
+if getgenv then getgenv().BROKENHUBLOADED = true end
 local BHLoader = Instance.new("ScreenGui")
 BHLoader.IgnoreGuiInset = true
 local Frame = Instance.new("ImageLabel")
