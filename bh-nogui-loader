@@ -78,11 +78,17 @@ if string.len(loaderResponseFormatted) > 25 then
     warn("[B-H] Timer has been stopped.")
     warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
     wait(4)
-    --loadstring(loaderResponseFormatted)()
+    loadstring(loaderResponseFormatted)()
 else
     if loaderResponseFormatted == "Invalid-Unstatic-Code" then
+    	doLoadingTimeCount = false -- Stop timer
+    	warn("[B-H] Timer has been stopped.")
+    	warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
         game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
     elseif loaderResponseFormatted == "" then
+    	doLoadingTimeCount = false -- Stop timer
+    	warn("[B-H] Timer has been stopped.")
+    	warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
     	game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
     elseif loaderResponseFormatted == "Invalid-Script-Name" then
         if game:GetService("CoreGui"):FindFirstChild("BHLoader") then
@@ -91,10 +97,19 @@ else
 		DoNotSupportedAnimation.Parent = game.Workspace
     	end
     elseif loaderResponseFormatted == "Unexistent-Certificate-Codes" then
+    	doLoadingTimeCount = false -- Stop timer
+    	warn("[B-H] Timer has been stopped.")
+    	warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
     	game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error message has been sent from the server:\n 'Unexistent certificate codes!'")
     elseif loaderResponseFormatted == "Unsupported-Exploit" then
+    	doLoadingTimeCount = false -- Stop timer
+    	warn("[B-H] Timer has been stopped.")
+    	warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
     	game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error message has been sent from the server:\n 'This exploit is not supported!'")
     elseif makefolder and writefile and syn then
+    	doLoadingTimeCount = false -- Stop timer
+    	warn("[B-H] Timer has been stopped.")
+    	warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
         if isfolder("BH-CrashLogs") then
             for i=1,10000000000000 do
                 if isfile("BH-CrashLogs/Crash-"..tostring(i)..".txt") == false then
@@ -114,6 +129,9 @@ else
         end
         game.Players.LocalPlayer:Kick("[BROKENHUB]\n Unknown request error.\n\n[INFO]\nA crash-log has been saved in the 'BH-CrashLogs' folder in your exploit's workspace directory with more information about this bug. \nIf you cannot use our hub due to this error, we recommend that you send us this file so that we can analyze it further and lead to a solution.\nSorry for the inconvenience!")
     else
+    	doLoadingTimeCount = false -- Stop timer
+    	warn("[B-H] Timer has been stopped.")
+    	warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
         game.Players.LocalPlayer:Kick("[BROKENHUB]\n Unknown request error.\n(Is your exploit supported?)")
     end
 end
