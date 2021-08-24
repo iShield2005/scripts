@@ -77,7 +77,7 @@ if string.len(loaderResponseFormatted) > 25 then
     doLoadingTimeCount = false -- Stop timer
     warn("[B-H] Timer has been stopped.")
     warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
-    wait(4)
+    wait(2)
     loadstring(loaderResponseFormatted)()
 else
     if loaderResponseFormatted == "Invalid-Unstatic-Code" then
