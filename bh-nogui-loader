@@ -1,6 +1,15 @@
 -- New exploits are supported:
 -- Electron [50%]
 -- KRNL [100%]
+local loadingTime = 0
+local doLoadingTimeCount = false
+coroutine.wrap(function() -- For timer 
+	while wait(.1) do
+	    if doLoadingTimeCount == true then
+	        loadingTime = loadingTime + .1
+	    end
+	end
+end)()
 local http_request = http_request
 if IsElectron then
 	http_request = httprequest
@@ -49,6 +58,8 @@ local function http_request_get(url)
 		}
 	}).Body
 end
+warn("[B-H] Starting timer!")
+doLoadingTimeCount = true -- Start timer
 local loaderResponse = http_request_get("http://brokenhub.shieldevelopment.tk/brokenhub-handler.php")
 local loaderResponseFormatted = string.gsub(loaderResponse,"<br />","")
 if string.len(loaderResponseFormatted) > 25 then
@@ -63,8 +74,11 @@ if string.len(loaderResponseFormatted) > 25 then
 	DoLoadedAnimation.Name = "BHDoLoadedAnimation"
 	DoLoadedAnimation.Parent = game.Workspace
     end
+    doLoadingTimeCount = false -- Stop timer
+    warn("[B-H] Timer has been stopped.")
+    warn("[B-H] Loading the script took "..tostring(loadingTime).." seconds.") -- Print timer
     wait(4)
-    loadstring(loaderResponseFormatted)()
+    --loadstring(loaderResponseFormatted)()
 else
     if loaderResponseFormatted == "Invalid-Unstatic-Code" then
         game.Players.LocalPlayer:Kick("[BROKENHUB]\nAn error occurred on the server side.\n Please try again later.\n (Possible request oversaturation, not your fault)")
