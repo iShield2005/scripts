@@ -1,0 +1,84 @@
+--Trade bot / Our side
+
+
+local v2 = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
+-- Enable trades
+if game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text ~= "All" then
+	repeat
+	    wait(1)
+		local args = {
+    			[1] = {
+        		[1] = "Trading"
+    			}
+		}
+		if game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All" then break end
+		workspace.__THINGS.__REMOTES:FindFirstChild("toggle setting"):FireServer(unpack(args))
+	until game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All"
+end
+game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Changed:Connect(function() --Accepter
+    wait(1)
+    print("Handling request...")
+    local inviterName = string.split(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text, " ")[1]
+    if game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled == false then return end
+    if inviterName == "Your" then
+        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Ok.Activated)) do
+			v:Fire()
+        end
+        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+        end
+	    return
+    end
+    if game.Players:FindFirstChild(inviterName) then
+        inviter = game.Players[inviterName]
+        if inviter.Character:FindFirstChild("LeftHand") then --Identifier
+            for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+				v:Fire()
+			end
+        else
+            for i,v in pairs(getconnections(game:GetService("Players").iChronux.PlayerGui.Message.Frame.Yes.Activated)) do
+				v:Fire()
+			end
+        end
+    else
+        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Ok.Activated)) do
+			v:Fire()
+        end
+        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+        end
+	    return
+    end
+end)
+
+v2.Network.Fired("Init Trade"):Connect(function(p3, p4) --Trade handler
+    tradeName = p3;
+    if inviter and inviter.Character:FindFirstChild("LeftHand") then
+        local args = {
+            [1] = {
+                [1] = tradeName
+            }
+        }
+        workspace.__THINGS.__REMOTES:FindFirstChild("cancel trade"):InvokeServer(unpack(args))
+        return
+    end
+    if not inviter then
+        local args = {
+            [1] = {
+                [1] = tradeName
+            }
+        }
+        workspace.__THINGS.__REMOTES:FindFirstChild("cancel trade"):InvokeServer(unpack(args))
+        return
+    end
+	print("Started with ID "..tradeName)
+	for i=0,10 do
+	    wait(.1)
+	    local acceptargs = {
+            [1] = {
+            [1] = tradeName
+            }
+        }
+	    workspace.__THINGS.__REMOTES:FindFirstChild("ready trade"):InvokeServer(unpack(acceptargs))
+	end
+end);
