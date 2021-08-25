@@ -76,7 +76,16 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Changed:Conn
         end
 	    return
     end
-    if game.Players:FindFirstChild(inviterName) then
+    local function getPlayerFromString(name)
+    	if game.Players:FindFirstChild(name) then return game.Players:FindFirstChild(name) end
+	for i,v in pairs(game.Players:GetChildren()) do
+		if v.DisplayName and v.DisplayName == name then
+			return v
+		end
+	end
+	return nil
+    end
+    if getPlayerFromString(inviterName) then
         inviter = game.Players[inviterName]
         if inviter.Character:FindFirstChild("LeftHand") then --Identifier
             for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
