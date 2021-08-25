@@ -86,7 +86,7 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Changed:Conn
 	return nil
     end
     if getPlayerFromString(inviterName) then
-        inviter = game.Players[inviterName]
+        inviter = getPlayerFromString(inviterName)
         if inviter.Character:FindFirstChild("LeftHand") then --Identifier
             for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
 				v:Fire()
