@@ -92,7 +92,7 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Changed:Conn
 				v:Fire()
 			end
         else
-            for i,v in pairs(getconnections(game:GetService("Players").iChronux.PlayerGui.Message.Frame.Yes.Activated)) do
+            for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Yes.Activated)) do
 				v:Fire()
 			end
         end
