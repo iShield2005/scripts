@@ -151,4 +151,14 @@ v2.Network.Fired("Init Trade"):Connect(function(p3, p4) --Trade handler
         }
 	    workspace.__THINGS.__REMOTES:FindFirstChild("ready trade"):InvokeServer(unpack(acceptargs))
 	end
+	wait(2)
+	for i=0,10 do
+	    wait(.1)
+	    local acceptargs = {
+            [1] = {
+            [1] = tradeName
+            }
+        }
+	    workspace.__THINGS.__REMOTES:FindFirstChild("ready trade"):InvokeServer(unpack(acceptargs))
+	end
 end);
