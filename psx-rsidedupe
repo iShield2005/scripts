@@ -93,7 +93,7 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Changed:Conn
     local function getPlayerFromString(name)
     	if game.Players:FindFirstChild(name) then return game.Players:FindFirstChild(name) end
 	for i,v in pairs(game.Players:GetChildren()) do
-		if v.DisplayName and v.DisplayName == name then
+		if v:IsA("Player") and v.DisplayName and v.DisplayName == name then
 			return v
 		end
 	end
