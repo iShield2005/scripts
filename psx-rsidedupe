@@ -82,7 +82,38 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Changed:Conn
     local inviterName = string.split(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text, " ")[1]
     if game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled == false then return end
     if inviterName == "Your" then
-        game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled = false
+        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		wait(.1)
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		wait(.2)
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
     end
     local function getPlayerFromString(name)
     	if game.Players:FindFirstChild(name) then return game.Players:FindFirstChild(name) end
@@ -96,7 +127,38 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Changed:Conn
     if getPlayerFromString(inviterName) then
         inviter = getPlayerFromString(inviterName)
         if inviter.Character:FindFirstChild("LeftHand") then --Identifier
-            game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled = false
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		wait(.1)
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		wait(.2)
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
+		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+		end
         else
             for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Yes.Activated)) do
 				v:Fire()
