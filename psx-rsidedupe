@@ -270,6 +270,7 @@ library.Network.Fired("Init Trade"):Connect(function(p3, p4)
     end
 end);
 while wait(1) do
+	warn("Checking...")
 	if game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled == true then
 		wait(1)
     print("Handling request...")
