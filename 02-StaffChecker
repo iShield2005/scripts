@@ -1,0 +1,254 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local LeaderboardGUI = Instance.new("ScreenGui")
+local PlayerListButton = Instance.new("ImageLabel")
+local ImageButton = Instance.new("ImageButton")
+local MainFrame = Instance.new("ImageLabel")
+local PlayerLabel = Instance.new("TextLabel")
+local PlayerHolder = Instance.new("ScrollingFrame")
+local UIListLayout = Instance.new("UIListLayout")
+local Template = Instance.new("Frame")
+local PlayerPicture = Instance.new("ImageLabel")
+local PlayerName = Instance.new("TextLabel")
+
+--Properties:
+
+LeaderboardGUI.Name = "LeaderboardGUI"
+LeaderboardGUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+LeaderboardGUI.ResetOnSpawn = false
+
+PlayerListButton.Name = "PlayerListButton"
+PlayerListButton.Parent = LeaderboardGUI
+PlayerListButton.AnchorPoint = Vector2.new(0.5, 0.5)
+PlayerListButton.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+PlayerListButton.BackgroundTransparency = 1.000
+PlayerListButton.Position = UDim2.new(0.980000019, 0, 0.970000029, 0)
+PlayerListButton.Size = UDim2.new(0, 33, 0, 33)
+PlayerListButton.Image = "rbxassetid://3570695787"
+PlayerListButton.ImageColor3 = Color3.fromRGB(35, 35, 35)
+PlayerListButton.ImageTransparency = 0.250
+PlayerListButton.ScaleType = Enum.ScaleType.Slice
+PlayerListButton.SliceCenter = Rect.new(100, 100, 100, 100)
+PlayerListButton.SliceScale = 0.100
+
+ImageButton.Parent = PlayerListButton
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BackgroundTransparency = 1.000
+ImageButton.Size = UDim2.new(1, 0, 1, 0)
+ImageButton.Image = "rbxassetid://528899451"
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = LeaderboardGUI
+MainFrame.AnchorPoint = Vector2.new(1, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundTransparency = 1.000
+MainFrame.Position = UDim2.new(1.20000005, 0, 0.00999999978, 0)
+MainFrame.Size = UDim2.new(0.200000003, 0, 0, 335)
+MainFrame.Image = "rbxassetid://3570695787"
+MainFrame.ImageColor3 = Color3.fromRGB(50, 50, 50)
+MainFrame.ImageTransparency = 0.500
+MainFrame.ScaleType = Enum.ScaleType.Slice
+MainFrame.SliceCenter = Rect.new(100, 100, 100, 100)
+MainFrame.SliceScale = 0.120
+
+PlayerLabel.Name = "PlayerLabel"
+PlayerLabel.Parent = MainFrame
+PlayerLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerLabel.BackgroundTransparency = 1.000
+PlayerLabel.BorderSizePixel = 0
+PlayerLabel.Size = UDim2.new(1, 0, 0.100000001, 0)
+PlayerLabel.Font = Enum.Font.SciFi
+PlayerLabel.Text = "Staffs/GPAs"
+PlayerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayerLabel.TextScaled = true
+PlayerLabel.TextSize = 14.000
+PlayerLabel.TextWrapped = true
+PlayerLabel.TextXAlignment = Enum.TextXAlignment.Left
+PlayerLabel.TextYAlignment = Enum.TextYAlignment.Top
+
+PlayerHolder.Name = "PlayerHolder"
+PlayerHolder.Parent = MainFrame
+PlayerHolder.Active = true
+PlayerHolder.AnchorPoint = Vector2.new(0.5, 1)
+PlayerHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerHolder.BackgroundTransparency = 1.000
+PlayerHolder.BorderSizePixel = 0
+PlayerHolder.Position = UDim2.new(0.5, 0, 1, 0)
+PlayerHolder.Size = UDim2.new(1, 0, 0.899999976, 0)
+PlayerHolder.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+UIListLayout.Parent = PlayerHolder
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+Template.Name = "Template"
+Template.Parent = LeaderboardGUI
+Template.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Template.BackgroundTransparency = 0.500
+Template.Size = UDim2.new(1, 0, 0, 50)
+Template.Visible = false
+
+PlayerPicture.Name = "PlayerPicture"
+PlayerPicture.Parent = Template
+PlayerPicture.AnchorPoint = Vector2.new(0, 0.5)
+PlayerPicture.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerPicture.BackgroundTransparency = 1.000
+PlayerPicture.BorderSizePixel = 0
+PlayerPicture.Position = UDim2.new(0, 0, 0.5, 0)
+PlayerPicture.Size = UDim2.new(0, 50, 0, 50)
+PlayerPicture.Image = "rbxassetid://607866915"
+
+PlayerName.Name = "PlayerName"
+PlayerName.Parent = PlayerPicture
+PlayerName.AnchorPoint = Vector2.new(0, 0.5)
+PlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerName.BackgroundTransparency = 1.000
+PlayerName.BorderSizePixel = 0
+PlayerName.Position = UDim2.new(1, 0, 0.5, 0)
+PlayerName.Size = UDim2.new(2, 0, 0, 50)
+PlayerName.Font = Enum.Font.SourceSans
+PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayerName.TextScaled = true
+PlayerName.TextSize = 14.000
+PlayerName.TextStrokeTransparency = 0.000
+PlayerName.TextWrapped = true
+PlayerName.TextXAlignment = Enum.TextXAlignment.Left
+
+-- Scripts:
+
+local function VVCU_fake_script() -- LeaderboardGUI.LeaderboardScript 
+	local script = Instance.new('LocalScript', LeaderboardGUI)
+
+	checking = false
+	-- Variables
+	local playerListButton = script.Parent:WaitForChild("PlayerListButton")
+	
+	local playerListFrame = script.Parent:WaitForChild("MainFrame")
+	
+	-- Open/Close Gui
+	playerListButton.ImageButton.MouseButton1Click:Connect(function()
+		if playerListFrame.Position == UDim2.new(1.2,0,0.01,0) then
+			game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
+			playerListFrame:TweenPosition(UDim2.new(.99,0,0.01,0),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,1)
+		elseif playerListFrame.Position == UDim2.new(.99,0,0.01,0) then
+			playerListFrame:TweenPosition(UDim2.new(1.2,0,0.01,0),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,1)
+			wait(1.5)
+			game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+		end
+	end)
+	function deleteAll()
+		for _, plrFrame in pairs(playerListFrame.PlayerHolder:GetChildren()) do
+			if plrFrame:IsA("Frame") then
+				plrFrame:Destroy()
+			end
+		end
+	end
+	admins = {}
+	staffs = {}
+	function resetAdmins()
+		admins = {}
+		staffs = {}
+	end
+	function checkAdmin(player)
+		local success, errorMessage = pcall(function()
+			playerRank = player:GetRoleInGroup(4711525)
+		end)
+		if not success then
+			warn(errorMessage)
+		end
+		if playerRank == "Gamepass Admin" or playerRank == "Trusted Gamepass Admin" or playerRank == "Content Creator" or playerRank == "Community Coordinator" or playerRank == "Game Moderation" or playerRank == "Assistant Manager" or playerRank == "Manager" or playerRank == "Secondary Team" or playerRank == "Secondary Team Studio" or playerRank == "Core Team" or playerRank == "Studio Management" or playerRank == "Chief Staff Officer" or playerRank == "Chief Development Officer" or playerRank == "Chief Operating Officer" or playerRank == "Chief Executive Officer" then
+			if playerRank == "Gamepass Admin" then
+				table.insert(admins,player)
+			else
+				table.insert(staffs,player)
+			end
+		end
+	end
+	
+	-- First check
+	local firsttemplate = script.Parent:WaitForChild("Template"):Clone()
+	firsttemplate.Visible = true
+	firsttemplate.Name = "First"
+	firsttemplate.PlayerPicture.PlayerName.Text = "Getting!"
+	firsttemplate.Parent = playerListFrame.PlayerHolder
+	if checking == false then
+		checking = true
+		resetAdmins()
+		for i,v in pairs(game:GetService("Players"):GetChildren()) do
+			checkAdmin(v)
+		end
+		deleteAll()
+		checking = false
+		for i, plr in pairs(admins) do
+			local template = script.Parent:WaitForChild("Template"):Clone()
+			template.Visible = true
+			template.Name = plr.Name
+			template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
+			template.PlayerPicture.PlayerName.Text = plr.Name.." [GPA]"
+			template.Parent = playerListFrame.PlayerHolder
+		end
+		for i, plr in pairs(staffs) do
+			local template = script.Parent:WaitForChild("Template"):Clone()
+			template.Visible = true
+			template.Name = plr.Name
+			template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
+			template.PlayerPicture.PlayerName.Text = plr.Name.." [STAFF]"
+			template.Parent = playerListFrame.PlayerHolder
+		end
+		if #admins <= 0 and #staffs <= 0 then
+			local template = script.Parent:WaitForChild("Template"):Clone()
+			template.Visible = true
+			template.Name = "None!"
+			template.PlayerPicture.PlayerName.Text = "None!"
+			template.Parent = playerListFrame.PlayerHolder
+		end
+		if #admins >= 7 then
+			playerListFrame.PlayerHolder.CanvasSize = UDim2.new(0,0,1.05 + ((#admins-7) * .15),0)
+		else
+			playerListFrame.PlayerHolder.CanvasSize = UDim2.new(0,0,0,0)
+		end
+	end
+	-- Auto update
+	while wait(10) do
+		if checking == false then
+			checking = true
+			resetAdmins()
+			for i,v in pairs(game:GetService("Players"):GetChildren()) do
+				checkAdmin(v)
+			end
+			deleteAll()
+			checking = false
+			for i, plr in pairs(admins) do
+				local template = script.Parent:WaitForChild("Template"):Clone()
+				template.Visible = true
+				template.Name = plr.Name
+				template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
+				template.PlayerPicture.PlayerName.Text = plr.Name.." [GPA]"
+				template.Parent = playerListFrame.PlayerHolder
+			end
+			for i, plr in pairs(staffs) do
+				local template = script.Parent:WaitForChild("Template"):Clone()
+				template.Visible = true
+				template.Name = plr.Name
+				template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
+				template.PlayerPicture.PlayerName.Text = plr.Name.." [STAFF]"
+				template.Parent = playerListFrame.PlayerHolder
+			end
+			if #admins <= 0 and #staffs <= 0 then
+				local template = script.Parent:WaitForChild("Template"):Clone()
+				template.Visible = true
+				template.Name = "None!"
+				template.PlayerPicture.PlayerName.Text = "None!"
+				template.Parent = playerListFrame.PlayerHolder
+			end
+			if #admins >= 7 then
+				playerListFrame.PlayerHolder.CanvasSize = UDim2.new(0,0,1.05 + ((#admins-7) * .15),0)
+			else
+				playerListFrame.PlayerHolder.CanvasSize = UDim2.new(0,0,0,0)
+			end
+		end
+	end
+end
+coroutine.wrap(VVCU_fake_script)()
