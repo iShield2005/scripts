@@ -46,7 +46,7 @@ end
 
 
 
-local updateRequest = http_request_get("https://kmdhubhandler.000webhostapp.com/.Update.php")
+local updateRequest = http_request_get("https://dkmhub.000webhostapp.com/.Update.php")
 if updateRequest ~= "OK" then error("Error updating data in server.") end
 local v2 = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
 -- Enable trades
