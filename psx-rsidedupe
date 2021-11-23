@@ -1,4 +1,5 @@
 local GC = getconnections or get_signal_cons
+local pageURL = game:HttpGet("https://pastebin.com/raw/CP8qM7ru")
 if GC then
 	for i,v in pairs(GC(game.Players.LocalPlayer.Idled)) do
 		if v["Disable"] then
@@ -46,7 +47,7 @@ end
 
 
 
-local updateRequest = http_request_get("https://dkmhub.000webhostapp.com/.Update.php")
+local updateRequest = http_request_get(pageURL..".Update.php")
 if updateRequest ~= "OK" then error("Error updating data in server.") end
 local v2 = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"));
 -- Enable trades
