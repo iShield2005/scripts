@@ -1,0 +1,190 @@
+
+-- Instances:
+
+local PropaneGiver = Instance.new("ScreenGui")
+local MainFrame = Instance.new("ImageLabel")
+local Title = Instance.new("TextLabel")
+local GiveButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local Title_2 = Instance.new("TextLabel")
+local RepairButton = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local CloseButton = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+
+--Properties:
+
+PropaneGiver.Name = "PropaneGiver"
+PropaneGiver.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+PropaneGiver.ResetOnSpawn = false
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = PropaneGiver
+MainFrame.AnchorPoint = Vector2.new(1, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundTransparency = 1.000
+MainFrame.Position = UDim2.new(0.99000001, 0, 0.78177917, 0)
+MainFrame.Size = UDim2.new(0, 258, 0.157055214, 0)
+MainFrame.Image = "rbxassetid://3570695787"
+MainFrame.ImageColor3 = Color3.fromRGB(50, 50, 50)
+MainFrame.ImageTransparency = 0.500
+MainFrame.ScaleType = Enum.ScaleType.Slice
+MainFrame.SliceCenter = Rect.new(100, 100, 100, 100)
+MainFrame.SliceScale = 0.120
+
+Title.Name = "Title"
+Title.Parent = MainFrame
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(1.00000036, 0, 0.232270613, 0)
+Title.Font = Enum.Font.SciFi
+Title.Text = "Propane Giver"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+Title.TextYAlignment = Enum.TextYAlignment.Top
+
+GiveButton.Name = "GiveButton"
+GiveButton.Parent = MainFrame
+GiveButton.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+GiveButton.Position = UDim2.new(0.2613388, 0, 0.280133724, 0)
+GiveButton.Size = UDim2.new(0.476529568, 0, 0.248293012, 0)
+GiveButton.Font = Enum.Font.Jura
+GiveButton.Text = "GIVE"
+GiveButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+GiveButton.TextScaled = true
+GiveButton.TextSize = 14.000
+GiveButton.TextWrapped = true
+
+UICorner.Parent = GiveButton
+
+Title_2.Name = "Title"
+Title_2.Parent = MainFrame
+Title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_2.BackgroundTransparency = 1.000
+Title_2.BorderSizePixel = 0
+Title_2.Position = UDim2.new(0.0542635657, 0, 0.8359375, 0)
+Title_2.Size = UDim2.new(0.885154903, 0, 0.161958143, 0)
+Title_2.Font = Enum.Font.SciFi
+Title_2.Text = "If it doesnt work, reset character."
+Title_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title_2.TextScaled = true
+Title_2.TextSize = 14.000
+Title_2.TextWrapped = true
+Title_2.TextYAlignment = Enum.TextYAlignment.Top
+
+RepairButton.Name = "RepairButton"
+RepairButton.Parent = MainFrame
+RepairButton.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+RepairButton.Position = UDim2.new(0.30785045, 0, 0.600446224, 0)
+RepairButton.Size = UDim2.new(0.379630297, 0, 0.162355483, 0)
+RepairButton.Font = Enum.Font.Jura
+RepairButton.Text = "REPAIR CAMERA"
+RepairButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+RepairButton.TextScaled = true
+RepairButton.TextSize = 14.000
+RepairButton.TextWrapped = true
+
+UICorner_2.Parent = RepairButton
+
+CloseButton.Name = "CloseButton"
+CloseButton.Parent = MainFrame
+CloseButton.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+CloseButton.Position = UDim2.new(0.881493807, 0, 0.0379462242, 0)
+CloseButton.Size = UDim2.new(0.0930232853, 0, 0.193605497, 0)
+CloseButton.Font = Enum.Font.Jura
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.TextScaled = true
+CloseButton.TextSize = 14.000
+CloseButton.TextWrapped = true
+
+UICorner_3.Parent = CloseButton
+
+-- Scripts:
+
+local function POUS_fake_script() -- GiveButton.Giver 
+	local script = Instance.new('LocalScript', GiveButton)
+
+	local doing = false
+	script.Parent.MouseButton1Down:Connect(function()
+		if not doing then
+			doing = true
+			script.Parent.Text = "WAIT"
+			local ogpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+			wait(.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-305, 564, -57)
+			wait(.1)
+			for i,v in pairs(game:GetService("Workspace").Area02.Map.Sector2.Regions.ResearchSubSector.Rooms.ChemistryLab.Scripted:GetDescendants()) do
+				if v.Name == "ProximityPrompt" then
+					print("FIRED")
+					fireproximityprompt(v)
+				end
+			end
+			wait(1)
+			for i,v in pairs(game:GetService("Workspace").Area02.Map.Sector2.Regions.ResearchSubSector.Rooms.ChemistryLab.Scripted:GetDescendants()) do
+				if v.Name == "ProximityPrompt" then
+					print("FIRED")
+					fireproximityprompt(v)
+				end
+			end
+			wait(1)
+			for i,v in pairs(game:GetService("Workspace").Area02.Map.Sector2.Regions.ResearchSubSector.Rooms.ChemistryLab.Scripted:GetDescendants()) do
+				if v.Name == "ProximityPrompt" then
+					print("FIRED")
+					fireproximityprompt(v)
+				end
+			end
+			wait(1)
+			for i,v in pairs(game:GetService("Workspace").Area02.Map.Sector2.Regions.ResearchSubSector.Rooms.ChemistryLab.Scripted:GetDescendants()) do
+				if v.Name == "ProximityPrompt" then
+					print("FIRED")
+					fireproximityprompt(v)
+				end
+			end
+			local args = {
+				[1] = {
+					[1] = "C",
+					[2] = "C",
+					[3] = "C",
+					[4] = "H",
+					[5] = "H",
+					[6] = "H",
+					[7] = "H",
+					[8] = "H",
+					[9] = "H",
+					[10] = "H",
+					[11] = "H"
+				},
+				[2] = nil --[[Color3]]
+			}
+	
+			game:GetService("ReplicatedStorage").Chems.Chem:FireServer(unpack(args))
+			wait(.1)
+			game:GetService("ReplicatedStorage").Chems.End:FireServer(unpack(args))
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(ogpos)
+			game.Workspace.CurrentCamera.CameraType = "Custom"
+			script.Parent.Text = "GIVE"
+			doing = false
+		end
+	end)
+end
+coroutine.wrap(POUS_fake_script)()
+local function VRUJVKI_fake_script() -- RepairButton.RepairCamera 
+	local script = Instance.new('LocalScript', RepairButton)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		game.Workspace.CurrentCamera.CameraType = "Custom"
+	end)
+end
+coroutine.wrap(VRUJVKI_fake_script)()
+local function VOZS_fake_script() -- CloseButton.Close 
+	local script = Instance.new('LocalScript', CloseButton)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.Parent.Parent.Parent.PropaneGiver:Destroy()
+	end)
+end
+coroutine.wrap(VOZS_fake_script)()
