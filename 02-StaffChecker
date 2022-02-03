@@ -1,5 +1,4 @@
--- Gui to Lua
--- Version: 3.2
+-- Credits to iShield
 
 -- Instances:
 
@@ -7,12 +6,24 @@ local LeaderboardGUI = Instance.new("ScreenGui")
 local PlayerListButton = Instance.new("ImageLabel")
 local ImageButton = Instance.new("ImageButton")
 local MainFrame = Instance.new("ImageLabel")
-local PlayerLabel = Instance.new("TextLabel")
 local PlayerHolder = Instance.new("ScrollingFrame")
 local UIListLayout = Instance.new("UIListLayout")
+local PlayerLabel = Instance.new("TextLabel")
+local NotFound = Instance.new("ImageLabel")
+local Loading = Instance.new("ImageLabel")
+local Info = Instance.new("TextLabel")
+local Updating = Instance.new("TextLabel")
+local ViewingFrame = Instance.new("ImageLabel")
+local Viewing = Instance.new("TextLabel")
+local StopButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
 local Template = Instance.new("Frame")
 local PlayerPicture = Instance.new("ImageLabel")
+local SpyButton = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local PlayerDisplay = Instance.new("TextLabel")
 local PlayerName = Instance.new("TextLabel")
+local PlayerRank = Instance.new("TextLabel")
 
 --Properties:
 
@@ -45,29 +56,14 @@ MainFrame.Parent = LeaderboardGUI
 MainFrame.AnchorPoint = Vector2.new(1, 0)
 MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame.BackgroundTransparency = 1.000
-MainFrame.Position = UDim2.new(1.20000005, 0, 0.00999999978, 0)
-MainFrame.Size = UDim2.new(0.200000003, 0, 0, 335)
+MainFrame.Position = UDim2.new(0.99000001, 0, 0.00999999978, 0)
+MainFrame.Size = UDim2.new(0, 258, 0.699386477, 0)
 MainFrame.Image = "rbxassetid://3570695787"
 MainFrame.ImageColor3 = Color3.fromRGB(50, 50, 50)
 MainFrame.ImageTransparency = 0.500
 MainFrame.ScaleType = Enum.ScaleType.Slice
 MainFrame.SliceCenter = Rect.new(100, 100, 100, 100)
 MainFrame.SliceScale = 0.120
-
-PlayerLabel.Name = "PlayerLabel"
-PlayerLabel.Parent = MainFrame
-PlayerLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-PlayerLabel.BackgroundTransparency = 1.000
-PlayerLabel.BorderSizePixel = 0
-PlayerLabel.Size = UDim2.new(1, 0, 0.100000001, 0)
-PlayerLabel.Font = Enum.Font.SciFi
-PlayerLabel.Text = "Staffs/GPAs"
-PlayerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-PlayerLabel.TextScaled = true
-PlayerLabel.TextSize = 14.000
-PlayerLabel.TextWrapped = true
-PlayerLabel.TextXAlignment = Enum.TextXAlignment.Left
-PlayerLabel.TextYAlignment = Enum.TextYAlignment.Top
 
 PlayerHolder.Name = "PlayerHolder"
 PlayerHolder.Parent = MainFrame
@@ -76,18 +72,129 @@ PlayerHolder.AnchorPoint = Vector2.new(0.5, 1)
 PlayerHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlayerHolder.BackgroundTransparency = 1.000
 PlayerHolder.BorderSizePixel = 0
-PlayerHolder.Position = UDim2.new(0.5, 0, 1, 0)
-PlayerHolder.Size = UDim2.new(1, 0, 0.899999976, 0)
+PlayerHolder.Position = UDim2.new(0.5, 0, 0.849479854, 0)
+PlayerHolder.Size = UDim2.new(1, 0, 0.789083838, 0)
 PlayerHolder.CanvasSize = UDim2.new(0, 0, 0, 0)
 
 UIListLayout.Parent = PlayerHolder
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
+PlayerLabel.Name = "PlayerLabel"
+PlayerLabel.Parent = MainFrame
+PlayerLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerLabel.BackgroundTransparency = 1.000
+PlayerLabel.BorderSizePixel = 0
+PlayerLabel.Position = UDim2.new(0, 0, 3.14744009e-09, 0)
+PlayerLabel.Size = UDim2.new(1.00000036, 0, 0.0603960417, 0)
+PlayerLabel.Font = Enum.Font.SciFi
+PlayerLabel.Text = "Staffs/GPAs"
+PlayerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayerLabel.TextScaled = true
+PlayerLabel.TextSize = 14.000
+PlayerLabel.TextWrapped = true
+PlayerLabel.TextYAlignment = Enum.TextYAlignment.Top
+
+NotFound.Name = "NotFound"
+NotFound.Parent = MainFrame
+NotFound.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NotFound.BackgroundTransparency = 1.000
+NotFound.Position = UDim2.new(0.313432842, 0, 0.349253744, 0)
+NotFound.Size = UDim2.new(0.373134315, 0, 0.298507452, 0)
+NotFound.Visible = false
+NotFound.Image = "rbxassetid://501164554"
+NotFound.ScaleType = Enum.ScaleType.Fit
+
+Loading.Name = "Loading"
+Loading.Parent = MainFrame
+Loading.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Loading.BackgroundTransparency = 1.000
+Loading.Position = UDim2.new(0.313432842, 0, 0.349253744, 0)
+Loading.Size = UDim2.new(0.373134315, 0, 0.298507452, 0)
+Loading.Visible = false
+Loading.Image = "rbxassetid://2689141406"
+Loading.ScaleType = Enum.ScaleType.Fit
+
+Info.Name = "Info"
+Info.Parent = MainFrame
+Info.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Info.BackgroundTransparency = 1.000
+Info.BorderSizePixel = 0
+Info.Position = UDim2.new(0.0233438164, 0, 0.854742885, 0)
+Info.Size = UDim2.new(0.949612737, 0, 0.0961342156, 0)
+Info.Visible = false
+Info.Font = Enum.Font.Jura
+Info.Text = "[X]: Not in group. The player was detected using extra methods (tag showed, omni card, etc)"
+Info.TextColor3 = Color3.fromRGB(255, 255, 255)
+Info.TextScaled = true
+Info.TextSize = 14.000
+Info.TextWrapped = true
+Info.TextYAlignment = Enum.TextYAlignment.Top
+
+Updating.Name = "Updating"
+Updating.Parent = MainFrame
+Updating.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Updating.BackgroundTransparency = 1.000
+Updating.BorderSizePixel = 0
+Updating.Position = UDim2.new(0, 0, 0.949479818, 0)
+Updating.Size = UDim2.new(0.996212363, 0, 0.039993871, 0)
+Updating.Font = Enum.Font.Antique
+Updating.Text = ""
+Updating.TextColor3 = Color3.fromRGB(35, 255, 60)
+Updating.TextScaled = true
+Updating.TextSize = 14.000
+Updating.TextWrapped = true
+Updating.TextYAlignment = Enum.TextYAlignment.Top
+
+ViewingFrame.Name = "ViewingFrame"
+ViewingFrame.Parent = LeaderboardGUI
+ViewingFrame.AnchorPoint = Vector2.new(1, 0)
+ViewingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ViewingFrame.BackgroundTransparency = 1.000
+ViewingFrame.Position = UDim2.new(1, 0, 0.00999999233, 0)
+ViewingFrame.Size = UDim2.new(0, 268, 0, 119)
+ViewingFrame.Visible = false
+ViewingFrame.Image = "rbxassetid://3570695787"
+ViewingFrame.ImageColor3 = Color3.fromRGB(50, 50, 50)
+ViewingFrame.ImageTransparency = 0.500
+ViewingFrame.ScaleType = Enum.ScaleType.Slice
+ViewingFrame.SliceCenter = Rect.new(100, 100, 100, 100)
+ViewingFrame.SliceScale = 0.120
+
+Viewing.Name = "Viewing"
+Viewing.Parent = ViewingFrame
+Viewing.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Viewing.BackgroundTransparency = 1.000
+Viewing.BorderSizePixel = 0
+Viewing.Position = UDim2.new(0.0485074632, 0, 0, 0)
+Viewing.Size = UDim2.new(0.895522714, 0, 0.276470602, 0)
+Viewing.Font = Enum.Font.SciFi
+Viewing.Text = "Viewing [PLAYER]"
+Viewing.TextColor3 = Color3.fromRGB(255, 255, 255)
+Viewing.TextScaled = true
+Viewing.TextSize = 14.000
+Viewing.TextWrapped = true
+Viewing.TextYAlignment = Enum.TextYAlignment.Top
+
+StopButton.Name = "StopButton"
+StopButton.Parent = ViewingFrame
+StopButton.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+StopButton.Position = UDim2.new(0.25746268, 0, 0.428571433, 0)
+StopButton.Size = UDim2.new(0.481343269, 0, 0.420168072, 0)
+StopButton.Font = Enum.Font.Jura
+StopButton.Text = "STOP"
+StopButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+StopButton.TextScaled = true
+StopButton.TextSize = 14.000
+StopButton.TextWrapped = true
+
+UICorner.Parent = StopButton
+
 Template.Name = "Template"
 Template.Parent = LeaderboardGUI
 Template.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 Template.BackgroundTransparency = 0.500
-Template.Size = UDim2.new(1, 0, 0, 50)
+Template.Position = UDim2.new(0, 0, 8.481293e-09, 0)
+Template.Size = UDim2.new(1, 0, 0.121019214, 0)
 Template.Visible = false
 
 PlayerPicture.Name = "PlayerPicture"
@@ -96,19 +203,53 @@ PlayerPicture.AnchorPoint = Vector2.new(0, 0.5)
 PlayerPicture.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlayerPicture.BackgroundTransparency = 1.000
 PlayerPicture.BorderSizePixel = 0
-PlayerPicture.Position = UDim2.new(0, 0, 0.5, 0)
-PlayerPicture.Size = UDim2.new(0, 50, 0, 50)
+PlayerPicture.Position = UDim2.new(0, 0, 0.67076844, 0)
+PlayerPicture.Size = UDim2.new(0.193798453, 0, 0.658463061, 0)
 PlayerPicture.Image = "rbxassetid://607866915"
+PlayerPicture.ScaleType = Enum.ScaleType.Fit
+
+SpyButton.Name = "SpyButton"
+SpyButton.Parent = Template
+SpyButton.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+SpyButton.Position = UDim2.new(0.736382067, 0, 0.159999982, 0)
+SpyButton.Size = UDim2.new(0.224869713, 0, 0.680000067, 0)
+SpyButton.Visible = false
+SpyButton.Font = Enum.Font.GothamBlack
+SpyButton.Text = "SPY"
+SpyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpyButton.TextScaled = true
+SpyButton.TextSize = 14.000
+SpyButton.TextWrapped = true
+
+UICorner_2.Parent = SpyButton
+
+PlayerDisplay.Name = "PlayerDisplay"
+PlayerDisplay.Parent = Template
+PlayerDisplay.AnchorPoint = Vector2.new(0, 0.5)
+PlayerDisplay.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerDisplay.BackgroundTransparency = 1.000
+PlayerDisplay.BorderSizePixel = 0
+PlayerDisplay.Position = UDim2.new(0.217054278, 0, 0.686881602, 0)
+PlayerDisplay.Size = UDim2.new(0.441808492, 0, 0.341999978, 0)
+PlayerDisplay.Font = Enum.Font.SciFi
+PlayerDisplay.Text = "PlayerDisplayContainer"
+PlayerDisplay.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayerDisplay.TextScaled = true
+PlayerDisplay.TextSize = 14.000
+PlayerDisplay.TextStrokeTransparency = 0.000
+PlayerDisplay.TextWrapped = true
+PlayerDisplay.TextXAlignment = Enum.TextXAlignment.Left
 
 PlayerName.Name = "PlayerName"
-PlayerName.Parent = PlayerPicture
+PlayerName.Parent = Template
 PlayerName.AnchorPoint = Vector2.new(0, 0.5)
 PlayerName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 PlayerName.BackgroundTransparency = 1.000
 PlayerName.BorderSizePixel = 0
-PlayerName.Position = UDim2.new(1, 0, 0.5, 0)
-PlayerName.Size = UDim2.new(2, 0, 0, 50)
-PlayerName.Font = Enum.Font.SourceSans
+PlayerName.Position = UDim2.new(0.217054263, 0, 0.24875544, 0)
+PlayerName.Size = UDim2.new(0.511575937, 0, 0.534252465, 0)
+PlayerName.Font = Enum.Font.SciFi
+PlayerName.Text = "PlayerContainer"
 PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
 PlayerName.TextScaled = true
 PlayerName.TextSize = 14.000
@@ -116,24 +257,131 @@ PlayerName.TextStrokeTransparency = 0.000
 PlayerName.TextWrapped = true
 PlayerName.TextXAlignment = Enum.TextXAlignment.Left
 
+PlayerRank.Name = "PlayerRank"
+PlayerRank.Parent = Template
+PlayerRank.AnchorPoint = Vector2.new(0, 0.5)
+PlayerRank.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerRank.BackgroundTransparency = 1.000
+PlayerRank.BorderSizePixel = 0
+PlayerRank.Position = UDim2.new(0.0117159113, 0, 0.168007016, 0)
+PlayerRank.Size = UDim2.new(0.16657868, 0, 0.341999978, 0)
+PlayerRank.Font = Enum.Font.SciFi
+PlayerRank.Text = "Rank"
+PlayerRank.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayerRank.TextScaled = true
+PlayerRank.TextSize = 14.000
+PlayerRank.TextStrokeTransparency = 0.000
+PlayerRank.TextWrapped = true
+
 -- Scripts:
 
-local function VVCU_fake_script() -- LeaderboardGUI.LeaderboardScript 
+local function VVEOOJE_fake_script() -- PlayerHolder.ConnecterAndStuff 
+	local script = Instance.new('LocalScript', PlayerHolder)
+
+	local viewingFrame = script.Parent.Parent.Parent.ViewingFrame
+	local mainFrame = viewingFrame.Parent.MainFrame
+	local playerListButton = viewingFrame.Parent.PlayerListButton
+	function GetPlayerFromString(nameString)
+		if not nameString then return end 
+		local matches= {}
+		for _, player in ipairs (game.Players:GetPlayers()) do
+			if string.lower(player.Name):match(string.lower(nameString)) then
+				table.insert(matches, player)
+			end
+		end
+		if #matches== 1 then
+			return matches[1]
+		else
+			return false
+		end
+	end
+	while wait() do
+		for _, child in ipairs(script.Parent:GetDescendants()) do
+			if child.Name == "SpyButton" then
+				child.Name = "SpyButtonCONNECTED"
+				child.MouseButton1Down:Connect(function()
+					local playerToSpy = GetPlayerFromString(child.Parent.PlayerName.Text)
+					if playerToSpy then
+						if playerToSpy == game.Players.LocalPlayer then
+							child.Text = "THATS YOU"
+							wait(1)
+							child.Text = "SPY"
+						else
+							if playerToSpy.Character["Humanoid"] ~= nil and playerToSpy.Character["HumanoidRootPart"] ~= nil then
+								workspace.CurrentCamera.CameraSubject = playerToSpy.Character
+								viewingFrame.Viewing.Text = "Viewing "..playerToSpy.Name
+								mainFrame.Visible = false
+								playerListButton.Visible = false
+								viewingFrame.Visible = true
+							else
+								child.Text = "PLAYER IS DEAD OR VANISHED"
+							end
+						end
+					else
+						child.Text = "PLAYER LEFT THE GAME"
+						wait(1)
+						child.Text = "SPY"
+					end
+				end)
+			end
+		end	
+	end
+end
+coroutine.wrap(VVEOOJE_fake_script)()
+local function VWCYN_fake_script() -- PlayerHolder.SpyButtonEnabler 
+	local script = Instance.new('LocalScript', PlayerHolder)
+
+	while wait() do
+		pcall(function()
+			for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.LeaderboardGUI.MainFrame.PlayerHolder:GetDescendants()) do
+				if v.Name == "SpyButtonCONNECTED" and v.Parent.Name ~= game.Players.LocalPlayer.Name then
+					v.Visible = true
+				end
+			end
+		end)
+	end
+end
+coroutine.wrap(VWCYN_fake_script)()
+local function SBEJB_fake_script() -- Loading.Rotate 
+	local script = Instance.new('LocalScript', Loading)
+
+	while wait() do
+		for i=0,10 do
+			script.Parent.Rotation += .5
+		end
+	end
+end
+coroutine.wrap(SBEJB_fake_script)()
+local function XUYTFNW_fake_script() -- Info.Handler 
+	local script = Instance.new('LocalScript', Info)
+
+	while wait() do
+		pcall(function()
+			if script.Parent.Parent.Loading.Visible == true then
+				script.Parent.Visible = false
+			else
+				script.Parent.Visible = true
+			end
+		end)
+	end
+end
+coroutine.wrap(XUYTFNW_fake_script)()
+local function FGZRCLL_fake_script() -- LeaderboardGUI.LeaderboardScript 
 	local script = Instance.new('LocalScript', LeaderboardGUI)
 
 	checking = false
 	-- Variables
 	local playerListButton = script.Parent:WaitForChild("PlayerListButton")
-	
+	local updateDelaySeconds = 10
 	local playerListFrame = script.Parent:WaitForChild("MainFrame")
 	
 	-- Open/Close Gui
 	playerListButton.ImageButton.MouseButton1Click:Connect(function()
-		if playerListFrame.Position == UDim2.new(1.2,0,0.01,0) then
+		if playerListFrame.Position == UDim2.new(1.5,0,0.01,0) then
 			game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 			playerListFrame:TweenPosition(UDim2.new(.99,0,0.01,0),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,1)
 		elseif playerListFrame.Position == UDim2.new(.99,0,0.01,0) then
-			playerListFrame:TweenPosition(UDim2.new(1.2,0,0.01,0),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,1)
+			playerListFrame:TweenPosition(UDim2.new(1.5,0,0.01,0),Enum.EasingDirection.InOut,Enum.EasingStyle.Sine,1)
 			wait(1.5)
 			game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
 		end
@@ -147,6 +395,7 @@ local function VVCU_fake_script() -- LeaderboardGUI.LeaderboardScript
 	end
 	admins = {}
 	staffs = {}
+	permaadmins = {}
 	function resetAdmins()
 		admins = {}
 		staffs = {}
@@ -165,44 +414,56 @@ local function VVCU_fake_script() -- LeaderboardGUI.LeaderboardScript
 				table.insert(staffs,player)
 			end
 		end
+		pcall(function() -- Second detection method. If the player is not in the group but he showed his tag, he gets added to this list which is not erased.
+			if player.Character.HumanoidRootPart.NameGUIV8.TextFrame.Bottom.Text == "Gamepass Admin" or player.Character.HumanoidRootPart.NameGUIV8.Icons.GPA.Visible == true and not table.find(permaadmins,player) and not table.find(admins,player) and not table.find(staffs,player) then
+				table.insert(permaadmins,player)
+			end
+		end)
 	end
 	
 	-- First check
-	local firsttemplate = script.Parent:WaitForChild("Template"):Clone()
-	firsttemplate.Visible = true
-	firsttemplate.Name = "First"
-	firsttemplate.PlayerPicture.PlayerName.Text = "Getting!"
-	firsttemplate.Parent = playerListFrame.PlayerHolder
+	script.Parent.MainFrame.Loading.Visible = true
 	if checking == false then
 		checking = true
 		resetAdmins()
 		for i,v in pairs(game:GetService("Players"):GetChildren()) do
 			checkAdmin(v)
 		end
+		script.Parent.MainFrame.Loading.Visible = false
 		deleteAll()
 		checking = false
-		for i, plr in pairs(admins) do
-			local template = script.Parent:WaitForChild("Template"):Clone()
-			template.Visible = true
-			template.Name = plr.Name
-			template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
-			template.PlayerPicture.PlayerName.Text = plr.Name.." [GPA]"
-			template.Parent = playerListFrame.PlayerHolder
-		end
 		for i, plr in pairs(staffs) do
 			local template = script.Parent:WaitForChild("Template"):Clone()
 			template.Visible = true
 			template.Name = plr.Name
 			template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
-			template.PlayerPicture.PlayerName.Text = plr.Name.." [STAFF]"
+			template.PlayerName.Text = plr.Name
+			template.PlayerDisplay.Text = "@"..plr.DisplayName
+			template.PlayerRank.Text = "[STAFF]"
+			template.Parent = playerListFrame.PlayerHolder
+		end
+		for i, plr in pairs(admins) do
+			local template = script.Parent:WaitForChild("Template"):Clone()
+			template.Visible = true
+			template.Name = plr.Name
+			template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
+			template.PlayerName.Text = plr.Name
+			template.PlayerDisplay.Text = "@"..plr.DisplayName
+			template.PlayerRank.Text = "[GPA]"
+			template.Parent = playerListFrame.PlayerHolder
+		end
+		for i, plr in pairs(permaadmins) do
+			local template = script.Parent:WaitForChild("Template"):Clone()
+			template.Visible = true
+			template.Name = plr.Name
+			template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
+			template.PlayerName.Text = plr.Name
+			template.PlayerDisplay.Text = "@"..plr.DisplayName
+			template.PlayerRank.Text = "[GPA] [X]"
 			template.Parent = playerListFrame.PlayerHolder
 		end
 		if #admins <= 0 and #staffs <= 0 then
-			local template = script.Parent:WaitForChild("Template"):Clone()
-			template.Visible = true
-			template.Name = "None!"
-			template.PlayerPicture.PlayerName.Text = "None!"
-			template.Parent = playerListFrame.PlayerHolder
+			script.Parent.MainFrame.NotFound.Visible = true
 		end
 		if #admins >= 7 then
 			playerListFrame.PlayerHolder.CanvasSize = UDim2.new(0,0,1.05 + ((#admins-7) * .15),0)
@@ -211,44 +472,112 @@ local function VVCU_fake_script() -- LeaderboardGUI.LeaderboardScript
 		end
 	end
 	-- Auto update
-	while wait(10) do
+	coroutine.wrap(function()
+		while wait() do
+			for i,v in pairs(game.Players:GetChildren()) do
+				pcall(function()
+					if (v.Character.HumanoidRootPart.NameGUIV8.TextFrame.Bottom.Text == "Gamepass Admin" or v.Character.HumanoidRootPart.NameGUIV8.Icons.GPA.Visible == true or (v.Team.Name == "Foundation Personnel" and v.Backpack:FindFirstChild("Omni Card") ~= nil)) and not table.find(permaadmins,v) and not table.find(admins,v) and not table.find(staffs,v) then
+						table.insert(permaadmins,v)
+					elseif table.find(permaadmins,v) and (table.find(admins,v) or table.find(staffs,v)) then
+						for i = 1, #permaadmins do
+							if permaadmins[i] == v then
+								table.remove(permaadmins, i)
+							end
+						end
+					end
+				end)
+			end
+		end
+	end)()
+	coroutine.wrap(function()
+		while wait() do
+			for i,v in pairs(permaadmins) do
+				if game.Players:FindFirstChild(v.Name) == nil then
+					for i = 1, #permaadmins do
+						if permaadmins[i] == v then
+							table.remove(permaadmins, i)
+						end
+					end
+				end
+				if table.find(admins,v) or table.find(staffs,v) then
+					for i = 1, #permaadmins do
+						if permaadmins[i] == v then
+							table.remove(permaadmins, i)
+						end
+					end
+				end
+			end
+		end
+	end)()
+	while wait() do
 		if checking == false then
 			checking = true
 			resetAdmins()
 			for i,v in pairs(game:GetService("Players"):GetChildren()) do
 				checkAdmin(v)
 			end
+			script.Parent.MainFrame.NotFound.Visible = false
 			deleteAll()
 			checking = false
-			for i, plr in pairs(admins) do
-				local template = script.Parent:WaitForChild("Template"):Clone()
-				template.Visible = true
-				template.Name = plr.Name
-				template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
-				template.PlayerPicture.PlayerName.Text = plr.Name.." [GPA]"
-				template.Parent = playerListFrame.PlayerHolder
-			end
 			for i, plr in pairs(staffs) do
 				local template = script.Parent:WaitForChild("Template"):Clone()
 				template.Visible = true
 				template.Name = plr.Name
 				template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
-				template.PlayerPicture.PlayerName.Text = plr.Name.." [STAFF]"
+				template.PlayerName.Text = plr.Name
+				template.PlayerDisplay.Text = "@"..plr.DisplayName
+				template.PlayerRank.Text = "[STAFF]"
 				template.Parent = playerListFrame.PlayerHolder
 			end
-			if #admins <= 0 and #staffs <= 0 then
+			for i, plr in pairs(admins) do
 				local template = script.Parent:WaitForChild("Template"):Clone()
 				template.Visible = true
-				template.Name = "None!"
-				template.PlayerPicture.PlayerName.Text = "None!"
+				template.Name = plr.Name
+				template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
+				template.PlayerName.Text = plr.Name
+				template.PlayerDisplay.Text = "@"..plr.DisplayName
+				template.PlayerRank.Text = "[GPA]"
 				template.Parent = playerListFrame.PlayerHolder
+			end
+			for i, plr in pairs(permaadmins) do
+				if script.Parent.MainFrame.PlayerHolder:FindFirstChild(plr.Name) == nil then
+					local template = script.Parent:WaitForChild("Template"):Clone()
+					template.Visible = true
+					template.Name = plr.Name
+					template.PlayerPicture.Image = game.Players:GetUserThumbnailAsync(plr.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
+					template.PlayerName.Text = plr.Name
+					template.PlayerDisplay.Text = "@"..plr.DisplayName
+					template.PlayerRank.Text = "[GPA] [X]"
+					template.Parent = playerListFrame.PlayerHolder
+				end
+			end
+			if #admins <= 0 and #staffs <= 0 then
+				script.Parent.MainFrame.NotFound.Visible = true
 			end
 			if #admins >= 7 then
 				playerListFrame.PlayerHolder.CanvasSize = UDim2.new(0,0,1.05 + ((#admins-7) * .15),0)
 			else
 				playerListFrame.PlayerHolder.CanvasSize = UDim2.new(0,0,0,0)
 			end
+			local updatingTextFrame = script.Parent.MainFrame.Updating
+			for i=0,updateDelaySeconds do
+				wait(1)
+				updatingTextFrame.Text = "Updating in "..updateDelaySeconds-i.." seconds"
+			end
+			updatingTextFrame.Text = "Updating..."
 		end
 	end
 end
-coroutine.wrap(VVCU_fake_script)()
+coroutine.wrap(FGZRCLL_fake_script)()
+local function ULLM_fake_script() -- StopButton.Stop 
+	local script = Instance.new('LocalScript', StopButton)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.Parent.Parent.MainFrame.Visible = true
+		script.Parent.Parent.Parent.ViewingFrame.Visible = false
+		script.Parent.Parent.Parent.PlayerListButton.Visible = true
+		script.Parent.Parent.Viewing.Text = "Viewing [PLAYER]"
+		workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character
+	end)
+end
+coroutine.wrap(ULLM_fake_script)()
