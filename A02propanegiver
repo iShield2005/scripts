@@ -1,3 +1,5 @@
+-- Gui to Lua
+-- Version: 3.2
 
 -- Instances:
 
@@ -105,7 +107,7 @@ UICorner_3.Parent = CloseButton
 
 -- Scripts:
 
-local function POUS_fake_script() -- GiveButton.Giver 
+local function OEQWY_fake_script() -- GiveButton.Giver 
 	local script = Instance.new('LocalScript', GiveButton)
 
 	local doing = false
@@ -162,29 +164,88 @@ local function POUS_fake_script() -- GiveButton.Giver
 			}
 	
 			game:GetService("ReplicatedStorage").Chems.Chem:FireServer(unpack(args))
-			wait(.1)
-			game:GetService("ReplicatedStorage").Chems.End:FireServer(unpack(args))
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(ogpos)
-			game.Workspace.CurrentCamera.CameraType = "Custom"
-			script.Parent.Text = "GIVE"
+			wait(1)
+			if game.Players.LocalPlayer.Backpack:FindFirstChild("Propane") then
+				game:GetService("ReplicatedStorage").Chems.End:FireServer(unpack(args))
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(ogpos)
+				game.Workspace.CurrentCamera.CameraType = "Custom"
+				script.Parent.Text = "GIVE"
+			else
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-304, 564, -83)
+				wait(.1)
+				for i,v in pairs(game:GetService("Workspace").Area02.Map.Sector2.Regions.ResearchSubSector.Rooms.ChemistryLab.Scripted:GetDescendants()) do
+					if v.Name == "ProximityPrompt" then
+						print("FIRED")
+						fireproximityprompt(v)
+					end
+				end
+				wait(1)
+				for i,v in pairs(game:GetService("Workspace").Area02.Map.Sector2.Regions.ResearchSubSector.Rooms.ChemistryLab.Scripted:GetDescendants()) do
+					if v.Name == "ProximityPrompt" then
+						print("FIRED")
+						fireproximityprompt(v)
+					end
+				end
+				wait(1)
+				for i,v in pairs(game:GetService("Workspace").Area02.Map.Sector2.Regions.ResearchSubSector.Rooms.ChemistryLab.Scripted:GetDescendants()) do
+					if v.Name == "ProximityPrompt" then
+						print("FIRED")
+						fireproximityprompt(v)
+					end
+				end
+				wait(1)
+				for i,v in pairs(game:GetService("Workspace").Area02.Map.Sector2.Regions.ResearchSubSector.Rooms.ChemistryLab.Scripted:GetDescendants()) do
+					if v.Name == "ProximityPrompt" then
+						print("FIRED")
+						fireproximityprompt(v)
+					end
+				end
+				local args = {
+					[1] = {
+						[1] = "C",
+						[2] = "C",
+						[3] = "C",
+						[4] = "H",
+						[5] = "H",
+						[6] = "H",
+						[7] = "H",
+						[8] = "H",
+						[9] = "H",
+						[10] = "H",
+						[11] = "H"
+					},
+					[2] = nil --[[Color3]]
+				}
+	
+				game:GetService("ReplicatedStorage").Chems.Chem:FireServer(unpack(args))
+				wait(1)
+				if game.Players.LocalPlayer.Backpack:FindFirstChild("Propane") then
+					game:GetService("ReplicatedStorage").Chems.End:FireServer(unpack(args))
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(ogpos)
+					game.Workspace.CurrentCamera.CameraType = "Custom"
+					script.Parent.Text = "GIVE"
+				else
+					script.Parent.Text = "FAILED"
+				end
+			end
 			doing = false
 		end
 	end)
 end
-coroutine.wrap(POUS_fake_script)()
-local function VRUJVKI_fake_script() -- RepairButton.RepairCamera 
+coroutine.wrap(OEQWY_fake_script)()
+local function UJZE_fake_script() -- RepairButton.RepairCamera 
 	local script = Instance.new('LocalScript', RepairButton)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		game.Workspace.CurrentCamera.CameraType = "Custom"
 	end)
 end
-coroutine.wrap(VRUJVKI_fake_script)()
-local function VOZS_fake_script() -- CloseButton.Close 
+coroutine.wrap(UJZE_fake_script)()
+local function PEMVKMS_fake_script() -- CloseButton.Close 
 	local script = Instance.new('LocalScript', CloseButton)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		script.Parent.Parent.Parent.Parent.PropaneGiver:Destroy()
 	end)
 end
-coroutine.wrap(VOZS_fake_script)()
+coroutine.wrap(PEMVKMS_fake_script)()
