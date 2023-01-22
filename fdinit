@@ -15,12 +15,23 @@ function GetTpFileContents()
 	end
 end
 function GetRandomJobId()
+	wait(5)
 	local chosenId = nil
 	local servers = httpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
 	for i,v in pairs(servers.data) do
-		if v.playing ~= v.maxPlayers and v.id ~= game.JobId and v.ping < 2500 then
+		if v and v.playing ~= nil and v.ping ~= nil and v.id ~= nil and v.playing ~= v.maxPlayers and v.id ~= game.JobId and v.ping < 2500 then
 			chosenId = v.id
 			break
+		end
+	end
+	wait(3)
+	if not chosenId then
+		local servers = httpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+		for i,v in pairs(servers.data) do
+			if v and v.playing ~= nil and v.ping ~= nil and v.id ~= nil and v.playing ~= v.maxPlayers and v.id ~= game.JobId and v.ping < 2500 then
+				chosenId = v.id
+				break
+			end
 		end
 	end
 	return chosenId
