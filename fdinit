@@ -1,6 +1,7 @@
 repeat
 	wait()
 until game:IsLoaded() or (game:GetService("CoreGui") ~= nil and game:GetService("CoreGui").RobloxPromptGui ~= nil and game:GetService("CoreGui").RobloxPromptGui.promptOverlay ~= nil and game:GetService("CoreGui").RobloxPromptGui.promptOverlay:FindFirstChild("ErrorPrompt") ~= nil)
+print("[AUTO-DUPE] Loaded init script!")
 --//Variables
 local player = game.Players.LocalPlayer
 local promptOverlay = game:GetService("CoreGui").RobloxPromptGui.promptOverlay
@@ -15,17 +16,8 @@ function GetTpFileContents()
 	end
 end
 function GetRandomJobId()
-	wait(5)
 	local chosenId = nil
-	local servers = httpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
-	for i,v in pairs(servers.data) do
-		if v and v.playing ~= nil and v.ping ~= nil and v.id ~= nil and v.playing ~= v.maxPlayers and v.id ~= game.JobId and v.ping < 2500 then
-			chosenId = v.id
-			break
-		end
-	end
-	wait(3)
-	if not chosenId then
+	pcall(function()
 		local servers = httpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
 		for i,v in pairs(servers.data) do
 			if v and v.playing ~= nil and v.ping ~= nil and v.id ~= nil and v.playing ~= v.maxPlayers and v.id ~= game.JobId and v.ping < 2500 then
@@ -33,6 +25,22 @@ function GetRandomJobId()
 				break
 			end
 		end
+	end)
+	wait(1)
+	if not chosenId then
+		repeat
+			print("Searching for a new server again...")
+			pcall(function()
+				local servers = httpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+				for i,v in pairs(servers.data) do
+					if v and v.playing ~= nil and v.ping ~= nil and v.id ~= nil and v.playing ~= v.maxPlayers and v.id ~= game.JobId and v.ping < 2500 then
+						chosenId = v.id
+						break
+					end
+				end
+			end)
+			wait(1)
+		until chosenId ~= nil
 	end
 	return chosenId
 end
@@ -77,4 +85,5 @@ if promptOverlay:FindFirstChild("ErrorPrompt") ~= nil then
 end
 local key = GetKey()
 if key == nil then key = "" end
+print("[AUTO-DUPE] Loadstring!")
 --loadstring
