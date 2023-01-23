@@ -1,0 +1,89 @@
+repeat
+	wait()
+until game:IsLoaded() or (game:GetService("CoreGui") ~= nil and game:GetService("CoreGui").RobloxPromptGui ~= nil and game:GetService("CoreGui").RobloxPromptGui.promptOverlay ~= nil and game:GetService("CoreGui").RobloxPromptGui.promptOverlay:FindFirstChild("ErrorPrompt") ~= nil)
+print("[AUTO-DUPE] Loaded init script!")
+--//Variables
+local player = game.Players.LocalPlayer
+local promptOverlay = game:GetService("CoreGui").RobloxPromptGui.promptOverlay
+local tpService = game:GetService("TeleportService")
+local httpService = game:GetService("HttpService")
+--//Functions
+function GetTpFileContents()
+	if isfile("emergencytp.comm") then
+		return httpService:JSONDecode(readfile("emergencytp.comm"))
+	else
+		return nil
+	end
+end
+function GetRandomJobId()
+	local chosenId = nil
+	pcall(function()
+		local servers = httpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+		for i,v in pairs(servers.data) do
+			if v and v.playing ~= nil and v.ping ~= nil and v.id ~= nil and v.playing ~= v.maxPlayers and v.id ~= game.JobId and v.ping < 2500 then
+				chosenId = v.id
+				break
+			end
+		end
+	end)
+	wait(1)
+	if not chosenId then
+		repeat
+			print("Searching for a new server again...")
+			pcall(function()
+				local servers = httpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+				for i,v in pairs(servers.data) do
+					if v and v.playing ~= nil and v.ping ~= nil and v.id ~= nil and v.playing ~= v.maxPlayers and v.id ~= game.JobId and v.ping < 2500 then
+						chosenId = v.id
+						break
+					end
+				end
+			end)
+			wait(1)
+		until chosenId ~= nil
+	end
+	return chosenId
+end
+function SwitchServer(jobid)
+	if jobid then
+		tpService:TeleportToPlaceInstance(game.PlaceId, jobid)
+	end
+end
+function GetKey()
+	if isfile("shieldscripts.key") then
+		return readfile("shieldscripts.key")
+	else
+		return nil
+	end
+end
+--//Main Code
+if not syn then
+	error("[SHD-SCRIPTS] Unsupported exploit!")
+	return
+end
+if promptOverlay:FindFirstChild("ErrorPrompt") ~= nil then
+	local fileData = GetTpFileContents()
+	if fileData == "wait" then
+		repeat
+			wait(1)
+			warn("Waiting...")
+		until GetTpFileContents() ~= "wait"
+		delfile("emergencytp.comm")
+		SwitchServer(fileData.newId)
+	elseif fileData == nil then
+		writefile("emergencytp.comm","wait")
+		local nId = GetRandomJobId()
+		local data = {currentId = game.JobId,newId = nId}
+		writefile("emergencytp.comm",httpService:JSONEncode(data))
+		SwitchServer(nId)
+	elseif fileData.currentId == game.JobId then
+		delfile("emergencytp.comm")
+		SwitchServer(fileData.newId)
+	else
+		game:Shutdown()
+	end
+end
+local key = GetKey()
+if key == nil then key = "" end
+print("[AUTO-DUPE] Loadstring!")
+--loadstring
